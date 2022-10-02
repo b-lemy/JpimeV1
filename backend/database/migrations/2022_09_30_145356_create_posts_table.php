@@ -15,7 +15,7 @@ return new class extends Migration
             $table ->string("title");
             $table ->string("body");
             $table ->string("thumbnail");
-            $table ->unique('slug');
+            $table ->string('slug')->unique();
             $table->timestamps();
         });
     }

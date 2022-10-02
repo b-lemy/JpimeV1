@@ -119,6 +119,22 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/sebastian/code-unit-reverse-lookup" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/sebastian/environment" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/defuse/php-encryption" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/stella-maris/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/nyholm/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/phpseclib/phpseclib" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/php-http/message-factory" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/paragonie/constant_time_encoding" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/firebase/php-jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/jwt" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/lcobucci/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/league/oauth2-server" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/league/uri-interfaces" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/league/uri" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/league/event" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laravel/passport" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/psr-http-message-bridge" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
