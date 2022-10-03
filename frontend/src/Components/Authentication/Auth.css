@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #5375e2;
+    background-color: #f65868;
 
 }
 .container{
@@ -13,30 +13,42 @@
     margin: 15px;
     display: flex;
     flex-direction: column;
-
-
     width: 400px;
 
 }
 
-input{
-    border: 1px solid gray ;
-    border-radius: 15px;
-    padding:10px;
-    margin:3px;
-}
 input:focus{
     outline: none;
     box-shadow: none;
 }
 label{
     font-weight:bold ;
+    margin-top: 15px;
 }
 .title{
     text-align: center;
 }
 
-.button{
-    background-color: #5375e2;
+button{
+    background-color: #2B74DD;
+    border-style: hidden;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: large;
+
+}
+input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    padding: 10px;
+
+}
+
+.no-outline:focus {
+    outline: none;
 }
 
