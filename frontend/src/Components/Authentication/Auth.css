@@ -1,0 +1,42 @@
+.body{
+   height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #5375e2;
+
+}
+.container{
+    background-color: #7791a1;
+    padding: 1rem;
+    border-radius: 15px;
+    margin: 15px;
+    display: flex;
+    flex-direction: column;
+
+
+    width: 400px;
+
+}
+
+input{
+    border: 1px solid gray ;
+    border-radius: 15px;
+    padding:10px;
+    margin:3px;
+}
+input:focus{
+    outline: none;
+    box-shadow: none;
+}
+label{
+    font-weight:bold ;
+}
+.title{
+    text-align: center;
+}
+
+.button{
+    background-color: #5375e2;
+}
+
