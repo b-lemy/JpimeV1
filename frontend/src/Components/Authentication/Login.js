@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import "./Auth.css"
 
 const Login = () => {
-    const [search, setSearch] = useState("");
+    const [user , setUser] = useState("");
 
 
 
@@ -12,7 +12,7 @@ const Login = () => {
 
 
     const onChanger = (e) => {
-        setSearch(e.target.value)
+        setUser(e.target.value)
 
     }
 
@@ -23,18 +23,19 @@ const Login = () => {
     return(
         <div className="body">
             <form onSubmit={Submit} className="container">
-                <h1 className="title"> Login</h1>
+                <h1 className="title">Login.</h1>
                 <label>EmailAddress</label>
                 <input
                     placeholder="Email"
-                    value={search}
-                    onChange={onChanger}
-
+                  //  value={search}
+                  //  onChange={onChanger}
                 />
                 <label>Password</label>
                 <input
-                    placeholder="password"/>
-
+                    placeholder="password"
+                  //  value={}
+                  //  onChange={}
+                />
                 <button  type="submit">Submit</button>
             </form>
 

@@ -3,17 +3,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f65868;
+    background-color: #FFFDFA;
 
 }
 .container{
-    background-color: #7791a1;
+    background-color: #CFCFCF;
     padding: 1rem;
     border-radius: 15px;
     margin: 15px;
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 350px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
 }
 
@@ -50,5 +51,11 @@ input {
 
 .no-outline:focus {
     outline: none;
+}
+.foot{
+    margin-top: 7px;
+    display:flex;
+    justify-content: space-between;
+
 }
 
