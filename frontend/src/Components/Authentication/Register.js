@@ -24,7 +24,7 @@ const Register = () => {
             password: password,
             confirm_password: confirm
         }).then((response) =>console.log(response.data))
-        console.log("alredy")
+        console.log("already")
     }
     return (
         <div className="body">
