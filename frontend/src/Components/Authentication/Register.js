@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import "./Auth.css"
 import {Link} from "react-router-dom";
-import {useAppContext} from "../../Context/AppContext";
 import axios from "axios";
 
 const Register = () => {
@@ -11,7 +10,6 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
     const [phone, setPhone] = useState("")
-    const {item} = useAppContext();
     console.log(first)
 
     const onSubmit = (e) => {

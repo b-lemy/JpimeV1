@@ -33,10 +33,11 @@ const Login = () => {
                 <label>Password</label>
                 <input
                     placeholder="password"
+                    type="password"
                   //  value={}
                   //  onChange={}
                 />
-                <button  type="submit">Submit</button>
+                <button  type="submit">Login</button>
             </form>
 
         </div>
