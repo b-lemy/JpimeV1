@@ -1,8 +1,17 @@
 import React, {useEffect, useState} from "react";
 import "./Auth.css"
+import {useSelector,useDispatch,useStore} from "react-redux";
 
 const Login = () => {
     const [user , setUser] = useState("");
+
+    const dispatch = useDispatch()
+    const counter = useSelector(state => state.counter)
+
+
+    const increment = ()=>{
+        dispatch({type:'increment'})
+    }
 
 
 
@@ -22,6 +31,8 @@ const Login = () => {
     }
     return(
         <div className="body">
+            <div>{counter}</div>
+            <button onClick={increment}>increment</button>
             <form onSubmit={Submit} className="container">
                 <h1 className="title">Login.</h1>
                 <label>EmailAddress</label>

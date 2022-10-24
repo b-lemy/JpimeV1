@@ -1,6 +1,6 @@
 import React, {useContext, useRef, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
-import {PostContext} from "../../Store/Forum-context";
+import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 
 
