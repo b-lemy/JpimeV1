@@ -1,4 +1,5 @@
-import {createStore} from "redux";
+// import {createStore} from "redux";
+import {configureStore} from "@reduxjs/toolkit";
 
 
 const InitialState = {
@@ -15,4 +16,4 @@ const authReducer = (state = InitialState, action) => {
 }
 
 
- export const store = createStore(authReducer)
+ export const store = configureStore(authReducer)

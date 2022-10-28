@@ -28,7 +28,7 @@ export const PostContext = createContext(InitialState);
 
 
 export const ForumProvider = ({children}) => {
-    const [postState, dispatchForum] = useReducer(postReducer, InitialState)
+    const [postState, dispatchForum] = useReducer( postReducer , InitialState)
     const addPostHandler = (post) => {
         dispatchForum({
             type: 'ADD_POST',

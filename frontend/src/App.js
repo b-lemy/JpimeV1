@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route, Link} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 
 import Register from "./Components/Authentication/Register";
 import Forum from "./Components/Forum/Forum";
@@ -20,8 +20,8 @@ function App() {
                 <Routes>
                     <Route path="/about" element={<About/>}/>
                     <Route path="/login" element={<Login/>}/>
-                    <Route path="/" element={<Forum/>}/>
-                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/forum" element={<Forum/>}/>
+                    <Route path="/" element={<Register/>}/>
                 </Routes>
             </Suspense>
         </div>

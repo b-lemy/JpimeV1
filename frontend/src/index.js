@@ -20,9 +20,7 @@ root.render(
         <Provider store={store}>
         <ForumProvider>
             <BrowserRouter>
-
                 <App/>
-
             </BrowserRouter>
         </ForumProvider>
         </Provider>
