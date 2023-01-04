@@ -19,6 +19,8 @@ const postReducer = (state, action) => {
                 posts: postUpdates
 
             }
+        default:
+            console.log('No input')
 
     }
     return InitialState;

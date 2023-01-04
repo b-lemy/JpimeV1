@@ -20,10 +20,10 @@ const Login = () => {
     },[])
 
 
-    const onChanger = (e) => {
-        setUser(e.target.value)
-
-    }
+    // const onChanger = (e) => {
+    //     setUser(e.target.value)
+    //
+    // }
 
 
     const Submit = (e) => {
