@@ -14,7 +14,7 @@ const Register = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:8000/api/register", {
+        axios.post("http://127.0.0.1:8000/api/register", {
             first_name: first,
             last_name: last,
             email: email,

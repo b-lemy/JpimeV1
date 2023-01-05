@@ -6,7 +6,9 @@ const Header = () => {
     return (
         <Fragment>
             <header className="header">
-                <h1 className="text-3xl font-bold"><Link to="/">JipimeFasta</Link></h1>
+                <h1 className="text-3xl font-bold">
+                    <Link to="/">JipimeFasta</Link>
+                </h1>
                 <div className="links">
                     <h2 className="links-to">Quiz</h2>
                     <Link to="/forum" className="links-to">Forum</Link>

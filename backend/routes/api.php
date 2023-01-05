@@ -15,7 +15,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/trial',function (){
+    return 'Something';
 
+});
 Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);
 

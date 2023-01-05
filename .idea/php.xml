@@ -128,6 +128,7 @@
       <path value="$PROJECT_DIR$/backend/vendor/symfony/psr-http-message-bridge" />
       <path value="$PROJECT_DIR$/backend/vendor/doctrine/deprecations" />
       <path value="$PROJECT_DIR$/backend/vendor/psr/clock" />
+      <path value="$PROJECT_DIR$/backend/vendor/barryvdh/laravel-cors" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

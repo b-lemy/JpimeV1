@@ -4,10 +4,11 @@ import {Routes, Route} from "react-router-dom";
 import Register from "./Components/Authentication/Register";
 import Forum from "./Components/Forum/Forum";
 import About from "./Components/Layout/About";
-import {lazy, Suspense} from "react";
+import Login from "./Components/Authentication/Login"
+import {Suspense} from "react";
 
-//Lazy Loading implementation
-const Login = lazy(() => import("./Components/Authentication/Login"))
+// //Lazy Loading implementation
+// const Login = lazy(() => import("./Components/Authentication/Login"))
 
 function App() {
 
