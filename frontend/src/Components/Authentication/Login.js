@@ -1,9 +1,9 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "./Auth.css"
 import {useSelector,useDispatch} from "react-redux";
 
 const Login = () => {
-    // const [user , setUser] = useState("");
+     const [user , setUser] = useState("");
 
     const dispatch = useDispatch()
     const counter = useSelector(state => state.counter)
@@ -20,10 +20,10 @@ const Login = () => {
     },[])
 
 
-    // const onChanger = (e) => {
-    //     setUser(e.target.value)
-    //
-    // }
+    const onChanger = (e) => {
+        setUser(e.target.value)
+
+    }
 
 
     const Submit = (e) => {

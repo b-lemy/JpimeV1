@@ -13,6 +13,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("post_id")->constrained()->cascadeOnDelete();
             $table->foreignId("user_id")->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table ->string("body");
             $table ->string("thumbnail");
             $table->timestamps();
