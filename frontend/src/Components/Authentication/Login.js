@@ -3,37 +3,30 @@ import "./Auth.css"
 import {useSelector,useDispatch} from "react-redux";
 
 const Login = () => {
-     const [user , setUser] = useState("");
-
+      const [user , setUser] = useState("");
     const dispatch = useDispatch()
-    const counter = useSelector(state => state.counter)
+     const counter = useSelector(state => state.counter)
 
 
     const increment = ()=>{
         dispatch({type:'increment'})
     }
-
-
-
-    useEffect(() => {
-
-    },[])
-
-
-    const onChanger = (e) => {
-        setUser(e.target.value)
-
-    }
-
-
-    const Submit = (e) => {
-        e.preventDefault()
-    }
+    //
+    // useEffect(() => {
+    //
+    // },[])
+    // const onChanger = (e) => {
+    //     setUser(e.target.value)
+    //
+    // }
+    // const Submit = (e) => {
+    //     e.preventDefault()
+    // }
     return(
         <div className="body">
             <div>{counter}</div>
             <button onClick={increment}>increment</button>
-            <form onSubmit={Submit} className="container">
+            <form  className="container">
                 <h1 className="title">Login.</h1>
                 <label>EmailAddress</label>
                 <input

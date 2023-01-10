@@ -1,4 +1,4 @@
-import React, {useContext, useRef, useState} from "react";
+import React, {useContext, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
