@@ -31,9 +31,28 @@
 }
 
 .links-to{
-    padding: 2vw;
-    font-weight: bold;
+    padding: 1vw;
+    font-size: 15px;
+    /*font-weight: bold;*/
     color: #fefefe;
+    text-decoration: none;
+
 
 }
+.links-title{
+    font-size: 20px;
+    color: #fefefe;
+    text-decoration: none;
+}
+.links-to:hover{
+    text-decoration: none;
+    color: #fefefe;
+}
+
+.links-title:hover{
+    text-decoration: none;
+    color: #fefefe;
+}
+
+
 

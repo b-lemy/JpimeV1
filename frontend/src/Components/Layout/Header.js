@@ -6,15 +6,15 @@ const Header = () => {
     return (
         <Fragment>
             <header className="header">
-                <h1 className="text-3xl font-bold">
-                    <Link to="/">JipimeFasta</Link>
+                <h1 className=" ">
+                    <Link to="/" className="links-title">JipimeFasta</Link>
                 </h1>
                 <div className="links">
-                    <h2 className="links-to">Quiz</h2>
+                    <Link to="" className="links-to">Quiz</Link>
                     <Link to="/forum" className="links-to">Forum</Link>
-                    <h2 className="links-to">Notes</h2>
-                    <h2 className="links-to">LeaderBoard</h2>
-                    <h2 className="links-to">News and Updates</h2>
+                    <Link to="" className="links-to">Notes</Link>
+                    <Link to="" className="links-to">LeaderBoard</Link>
+                    <Link to="" className="links-to">News and Updates</Link>
                     <Link to="/login" className="links-to">Login</Link>
                 </div>
 
