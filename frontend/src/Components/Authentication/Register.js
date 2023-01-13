@@ -29,7 +29,7 @@ const Register = () => {
         <AuthWrapper>
             <div className="body">
                 <form onSubmit={onSubmit} className="container">
-                    <h1 className="title">Register.</h1>
+                    <h5 className="title">Register.</h5>
                     <label>FirstName</label>
                     <input
                         placeholder="FirstName"

@@ -29,7 +29,7 @@ const Login = () => {
             {/*<div>{counter}</div>*/}
             {/*<button onClick={increment}>increment</button>*/}
             <form  className="container">
-                <h1 className="title">Login.</h1>
+                <h5 className="title">Login.</h5>
                 <label>EmailAddress</label>
                 <input
                     placeholder="Email"
