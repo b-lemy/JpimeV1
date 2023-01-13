@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from "react";
 import "./Auth.css"
 import {useSelector,useDispatch} from "react-redux";
+import AuthWrapper from "./AuthWrapper";
 
 const Login = () => {
       const [user , setUser] = useState("");
-    const dispatch = useDispatch()
-     const counter = useSelector(state => state.counter)
+    // const dispatch = useDispatch()
+    //  const counter = useSelector(state => state.counter)
 
 
-    const increment = ()=>{
-        dispatch({type:'increment'})
-    }
+    // const increment = ()=>{
+    //     dispatch({type:'increment'})
+    // }
     //
     // useEffect(() => {
     //
@@ -23,9 +24,10 @@ const Login = () => {
     //     e.preventDefault()
     // }
     return(
+        <AuthWrapper>
         <div className="body">
-            <div>{counter}</div>
-            <button onClick={increment}>increment</button>
+            {/*<div>{counter}</div>*/}
+            {/*<button onClick={increment}>increment</button>*/}
             <form  className="container">
                 <h1 className="title">Login.</h1>
                 <label>EmailAddress</label>
@@ -45,6 +47,7 @@ const Login = () => {
             </form>
 
         </div>
+        </AuthWrapper>
     )
 }
 

@@ -1,6 +1,6 @@
 .wrapp{
     background-color: #5c616e;
-    padding: 120px;
+    padding: 100px 50px;
     height: 100vh;
 
 
@@ -8,6 +8,6 @@
 
 .childs{
     background-color: #fefefe;
-    padding: 30px;
+    padding: 15px;
     border-radius: 15px;
 }

@@ -5,10 +5,13 @@ import {Routes, Route} from "react-router-dom";
 import Register from "./Components/Authentication/Register";
 import Forum from "./Components/Forum/Forum";
 import About from "./Components/Layout/About";
+import Login from "./Components/Authentication/Login";
+import Quiz from "./Components/Quiz/Quiz";
 
 import {Suspense} from "react";
+import Notes from "./Components/Notes/Notes";
 
-import Login from "./Components/Authentication/Login";
+
 
 // //Lazy Loading implementation
 // const Login = lazy(() => import("./Components/Authentication/Login"))
@@ -23,8 +26,10 @@ function App() {
             }>
                 <Routes>
                     <Route path="/about" element={<About/>}/>
-                    <Route path="/log" element={<Login/>}/>
-                    <Route path="/" element={<Forum/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/notes" element={<Notes/>}/>
+                    <Route path="/quiz" element={<Quiz/>}/>
+                    <Route path="/forum" element={<Forum/>}/>
                     <Route path="/register" element={<Register/>}/>
                 </Routes>
             </Suspense>

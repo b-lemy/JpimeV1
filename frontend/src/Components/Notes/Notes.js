@@ -1,11 +1,11 @@
 import React from "react";
 import Wrapper from "../Layout/Wrapper";
 
-const Quiz = () => {
+const Notes = () => {
     return(
         <Wrapper>
-        <h1>Quiz App soon</h1>
+            <h1>Notes App soon</h1>
         </Wrapper>
     )
 }
-export default Quiz;
+export default Notes;
