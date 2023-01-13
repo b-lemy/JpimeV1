@@ -1,3 +1,28 @@
 .input{
     background-color: #f65868;
+    margin: 20px;
+    justify-content: space-evenly;
+}
+
+
+.section{
+    justify-content: space-evenly;
+    padding-top: 1rem;
+    /*margin: 10px 5px;*/
+
+}
+.start_left{
+    background-color: #2B74DD;
+    margin: 10px 5px;
+    border-radius: 5px;
+    padding: 15px 30px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.start_right{
+    background-color: #5c616e;
+    margin: 10px 15px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }

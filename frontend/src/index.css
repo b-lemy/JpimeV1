@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body{
     margin: 0;
@@ -6,6 +8,3 @@ body{
     background-color: #fefefe;
 }
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
