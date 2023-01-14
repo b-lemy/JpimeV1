@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
  */
-class PostsFactory extends Factory
+class PostFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,8 +17,14 @@ class PostsFactory extends Factory
      */
     public function definition()
     {
+        $title = fake()->realText(10);
         return [
-            //
+            "user_id" => rand(1,10),
+            "title" => $title,
+            "body" => fake()->realText(150),
+            "slug" =>Str::slug($title),
+
+
         ];
     }
 }
