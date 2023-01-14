@@ -17,7 +17,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $title = fake()->realText(10);
+        $title = fake()->unique()->realText(10);
         return [
             "user_id" => rand(1,10),
             "title" => $title,
