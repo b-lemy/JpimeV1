@@ -5,6 +5,7 @@ import Wrapper from "../Layout/Wrapper";
 import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {comment} from "postcss";
+import {Link} from "react-router-dom";
 
 
 const Forum = () => {
@@ -37,11 +38,13 @@ const Forum = () => {
             <section className="row section">
                 <div className=" col-lg-8 col-md-8  ">
                     {post.map(item => (
-                        <div className="start_left" key={item.id}>
+                        <Link to={`/forum/${item.id}`} style={{textDecoration: "none",color:"black"}} key={item.id}>
+                        <div className="start_left" >
                             <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
                                 {item.title}</h6>
                             {item.body}.....
                         </div>
+                        </Link>
                     ))}
                 </div>
                 <div className=" col-lg-4 col-md-4 ">

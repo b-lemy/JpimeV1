@@ -10,6 +10,7 @@ import Quiz from "./Components/Quiz/Quiz";
 
 import {Suspense} from "react";
 import Notes from "./Components/Notes/Notes";
+import SinglePost from "./Components/Forum/SinglePost";
 
 
 
@@ -25,11 +26,12 @@ function App() {
                 <div> Loading component</div>
             }>
                 <Routes>
-                    <Route path="/about" element={<About/>}/>
+                    <Route path="/about"  element={<About/>} />
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/notes" element={<Notes/>}/>
                     <Route path="/quiz" element={<Quiz/>}/>
                     <Route path="/forum" element={<Forum/>}/>
+                    <Route path="/forum/:id"  element={<SinglePost/>}/>
                     <Route path="/register" element={<Register/>}/>
                 </Routes>
             </Suspense>
