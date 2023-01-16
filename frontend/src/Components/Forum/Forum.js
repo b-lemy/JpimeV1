@@ -4,17 +4,18 @@ import axios from "axios";
 import Wrapper from "../Layout/Wrapper";
 import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
+import {comment} from "postcss";
 
 
 const Forum = () => {
     const postCtx = useContext(PostContext);
 
-    const [post ,setPost] = useState([])
+    const [post, setPost] = useState([])
 
-    useEffect(()=>{
+    useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/posts")
             .then(response => setPost(response.data))
-    },[])
+    }, [])
 
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
@@ -35,20 +36,20 @@ const Forum = () => {
         <Wrapper>
             <section className="row section">
                 <div className=" col-lg-8 col-md-8  ">
-
-                        {post.map(item => (
-                            <div className="start_left" key={item.id}>
-                                <h6 style={{justifyContent:"center",display:"flex",fontStyle:"italic"}}>{item.title}</h6>
-                                {item.body}
-                            </div>
-                        ))}
+                    {post.map(item => (
+                        <div className="start_left" key={item.id}>
+                            <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
+                                {item.title}</h6>
+                            {item.body}.....
+                        </div>
+                    ))}
                 </div>
                 <div className=" col-lg-4 col-md-4 ">
                     <div className="start_right">
                         Tags
                         <div className="tag">
-                            <button className="tags"> Most Recent </button>
-                            <button className="tags">Most Likes </button>
+                            <button className="tags"> Most Recent</button>
+                            <button className="tags">Most Likes</button>
                             <button className="tags">Most Comments</button>
                             <button className="tags">Most Interaction</button>
                         </div>

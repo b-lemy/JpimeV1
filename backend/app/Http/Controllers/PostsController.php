@@ -11,8 +11,8 @@ class PostsController extends Controller
 
     public function index()
     {
-        $post = Post::all();
-        return $post;
+        $post = Post::with('comments.CommentReply')->get();
+        return $post->toArray();
 
     }
 
