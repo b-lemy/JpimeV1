@@ -18,11 +18,37 @@ const SinglePost = () =>{
 
             {SinglePost.map(item => (
                     <div key={item.id} >
+                        <div style={{padding:"15px",borderRadius:"7px",backgroundColor:"yellow"}}>
                         <h6>{item.title}</h6>
-                        {item.body}.....
-                        {item.comments.map(comment => (
-                            <div key={comment.id}>{comment.body}</div>
-                        ))}
+                        {item.body}>>>>
+                        </div>
+
+                            {item.comments.map(comment => (
+                          <div key={comment.id}
+                               style={{
+                                   paddingLeft:"50%",
+                                   paddingTop:"10px"
+                               }}>
+                              <div style={{padding:"15px",borderRadius:"7px", backgroundColor:"red"}}>
+                              {comment.body}
+                              </div>
+                              {comment.comment_reply.map (
+                                  reply => (
+                                  <div key={reply.id}
+                                       style={{
+                                           paddingLeft:"30%",
+                                           paddingTop:"10px"
+                                       }}
+                                  >
+                                  <div style={{padding:"15px",borderRadius:"7px", backgroundColor:"green"}}>
+                                      {reply.body}
+                                  </div>
+                                  </div>
+                              ))}
+                          </div>
+
+
+                   ))}
                     </div>
 
             ))}

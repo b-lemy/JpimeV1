@@ -12,7 +12,7 @@ class PostsController extends Controller
 
     public function index()
     {
-        $post = Post::with('comments.CommentReply')->get();
+        $post = Post::with("author")->get();
         return $post->toArray();
 
     }
@@ -36,7 +36,7 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::with('comments')->find($id);
+        $post = Post::with('comments.CommentReply')->find($id);
         return $post->toArray();
     }
 
