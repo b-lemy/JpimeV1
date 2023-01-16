@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,8 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        Post::find($id);
+        $post = Post::with('comments')->find($id);
+        return $post->toArray();
     }
 
 
