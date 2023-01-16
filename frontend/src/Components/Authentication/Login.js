@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import "./Auth.css"
-import {useSelector,useDispatch} from "react-redux";
+// import {useSelector,useDispatch} from "react-redux";
 import AuthWrapper from "./AuthWrapper";
 
 const Login = () => {
-      const [user , setUser] = useState("");
+      // const [user , setUser] = useState("");
     // const dispatch = useDispatch()
     //  const counter = useSelector(state => state.counter)
 

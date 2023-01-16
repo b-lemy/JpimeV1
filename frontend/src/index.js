@@ -9,7 +9,7 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {ForumProvider} from "./StoreContext/Forum-context";
 // import {store} from "./StoreRedux/AuthRedux";
-import {Provider} from "react-redux";
+// import {Provider} from "react-redux";
 
 
 

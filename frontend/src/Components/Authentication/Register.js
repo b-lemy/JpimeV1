@@ -22,8 +22,7 @@ const Register = () => {
             phone: phone,
             password: password,
             confirm_password: confirm
-        }).then((response) => console.log(response.data))
-        console.log("already")
+        }).then((response) => console.log("already"))
     }
     return (
         <AuthWrapper>

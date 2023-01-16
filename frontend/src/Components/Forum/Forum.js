@@ -1,4 +1,6 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import axios from "axios";
+
 import Wrapper from "../Layout/Wrapper";
 import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
@@ -7,6 +9,13 @@ import './Forum.css'
 const Forum = () => {
     const postCtx = useContext(PostContext);
 
+    const [post ,setPost] = useState([])
+
+    useEffect(()=>{
+        axios.get("http://127.0.0.1:8000/api/posts")
+            .then(response => setPost(response.data))
+    },[])
+
     const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
 
@@ -14,44 +23,24 @@ const Forum = () => {
     // const postbody = useRef();
 
 
-    const addPost = (e) => {
-        e.preventDefault()
-        postCtx.addPost({
-                title: title,
-                body: body
-            }
-        )
-    }
+    // const addPost = (e) => {
+    //     e.preventDefault()
+    //     postCtx.addPost({
+    //             title: title,
+    //             body: body
+    //         }
+    //     )
+    // }
     return (
         <Wrapper>
             <section className="row section">
                 <div className=" col-lg-8 col-md-8  ">
-                    <div className="start_left">
-                        Posts
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Libero id faucibus nisl tincidunt eget nullam. Magna etiam tempor orci eu lobortis.
-                        Consectetur purus ut faucibus pulvinar elementum integer enim neque volutpat.
-                        Mi ipsum faucibus vitae aliquet nec ullamcorper.
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Libero id faucibus nisl tincidunt eget nullam. Magna etiam tempor orci eu lobortis.
-                        Consectetur purus ut faucibus pulvinar elementum integer enim neque volutpat.
-                        Mi ipsum faucibus vitae aliquet nec ullamcorper.
-                </div>
-                <div className="start_left">
-                    Posts
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Libero id faucibus nisl tincidunt eget nullam. Magna etiam tempor orci eu lobortis.
-                    Consectetur purus ut faucibus pulvinar elementum integer enim neque volutpat.
-                    Mi ipsum faucibus vitae aliquet nec ullamcorper.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Libero id faucibus nisl tincidunt eget nullam. Magna etiam tempor orci eu lobortis.
-                    Consectetur purus ut faucibus pulvinar elementum integer enim neque volutpat.
-                    Mi ipsum faucibus vitae aliquet nec ullamcorper.
-                </div>
+
+                        {post.map(item => (
+                            <div className="start_left" key={item.id}>
+                                {item.body}
+                            </div>
+                        ))}
                 </div>
                 <div className=" col-lg-4 col-md-4 ">
                     <div className="start_right">
