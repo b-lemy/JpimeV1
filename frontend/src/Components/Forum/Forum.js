@@ -38,7 +38,7 @@ const Forum = () => {
             <section className="row section">
                 <div className=" col-lg-8 col-md-8  ">
                     {post.map(item => (
-                        <Link to={`/forum/${item.id}`} style={{textDecoration: "none",color:"black"}} key={item.id}>
+                        <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>
                         <div className="start_left" >
                             <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
                                 {item.title}</h6>
