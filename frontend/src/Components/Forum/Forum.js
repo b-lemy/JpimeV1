@@ -15,7 +15,8 @@ const Forum = () => {
 
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/posts")
-            .then(response => setPost(response.data))
+            .then((response) =>setPost(response.data))
+                // setPost(response.data))
     }, [])
 
     const [title, setTitle] = useState('')
@@ -40,6 +41,23 @@ const Forum = () => {
                     {post.map(item => (
                         <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>
                         <div className="start_left" >
+                            <div style={{display:"flex",alignItems:"center"}}>
+                                <h6 style={{borderRadius: '70%',marginRight: '10px', height: 'auto',
+                                    border:'1px solid red'}}>img</h6>
+
+                                <div style={{display:"flex",flexDirection:"column",marginBottom:'2px'}}>
+                                    {Object.keys(author[0]).map(auth =>(
+                                        <div  key={auth.id} style={{marginBottom:'2px',fontWeight:'bolder'}}>
+                                            {auth.id}</div>
+
+                                    ))}
+
+
+
+                                    <p style={{marginBottom:'2px'}}>{item.created_at}</p>
+                                </div>
+
+                            </div>
                             <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
                                 {item.title}</h6>
                             {item.body}.....

@@ -15,6 +15,7 @@ const SinglePost = () =>{
 
     return(
         <Wrapper>
+            <div style={{backgroundColor: "#ecf2f8"}}>
 
             {SinglePost.map(item => (
                     <div key={item.id} >
@@ -52,6 +53,7 @@ const SinglePost = () =>{
                     </div>
 
             ))}
+            </div>
         </Wrapper>
     )
 
