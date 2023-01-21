@@ -15,7 +15,7 @@ const Forum = () => {
 
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/api/posts")
-            .then((response) =>setPost(response.data))
+            .then((response) =>setPost(response.data.data))
                 // setPost(response.data))
     }, [])
 
@@ -46,15 +46,10 @@ const Forum = () => {
                                     border:'1px solid red'}}>img</h6>
 
                                 <div style={{display:"flex",flexDirection:"column",marginBottom:'2px'}}>
-                                    {Object.keys(author[0]).map(auth =>(
-                                        <div  key={auth.id} style={{marginBottom:'2px',fontWeight:'bolder'}}>
-                                            {auth.id}</div>
-
-                                    ))}
-
-
-
-                                    <p style={{marginBottom:'2px'}}>{item.created_at}</p>
+                                    <div style={{marginBottom:'2px',fontWeight:'bolder'}}>
+                                             {item.authorName}</div>
+                                    <p style={{marginBottom:'2px'}}>{item.created}</p>
+                                    <p style={{marginBottom:'2px'}}>{item.authorPhone}</p>
                                 </div>
 
                             </div>

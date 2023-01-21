@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostRequest;
+use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -12,8 +13,9 @@ class PostsController extends Controller
 
     public function index()
     {
+//        return Post::with("author")->get();
         $post = Post::with("author")->get();
-        return $post->toArray();
+        return PostResource::collection($post);
 
     }
 
