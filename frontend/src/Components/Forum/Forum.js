@@ -55,7 +55,7 @@ const Forum = () => {
                             </div>
                             <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
                                 {item.title}</h6>
-                            {item.body}.....
+                            {item.body}...
                         </div>
                         </Link>
                     ))}
