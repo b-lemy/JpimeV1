@@ -23,6 +23,7 @@ class PostResource extends JsonResource
             'created' =>$this->created_at->diffForHumans(),
             'authorPhone' => $this->author->phone,
             'authorName' => $this->author->first_name,
+            'avatar' => $this->author->avatar
 
         ];
     }

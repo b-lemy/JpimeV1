@@ -42,8 +42,8 @@ const Forum = () => {
                         <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>
                         <div className="start_left" >
                             <div style={{display:"flex",alignItems:"center"}}>
-                                <h6 style={{borderRadius: '70%',marginRight: '10px', height: 'auto',
-                                    border:'1px solid red'}}>img</h6>
+                                <img style={{borderRadius: '70%',marginRight: '10px', height: '50px' ,width:'50px',
+                                    border:'1px solid red'}} src={item.avatar}/>
 
                                 <div style={{display:"flex",flexDirection:"column",marginBottom:'2px'}}>
                                     <div style={{marginBottom:'2px',fontWeight:'bolder'}}>
