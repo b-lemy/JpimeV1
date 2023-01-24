@@ -40,7 +40,7 @@ class PostsController extends Controller
     {
         $post = Post::with(['comments.CommentReply','comments.CommentReply.user',
             'comments.user','author'])->find($id);
-        return $post->toArray();
+        return $post;
     }
 
 
