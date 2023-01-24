@@ -38,7 +38,8 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::with('comments.CommentReply')->find($id);
+        $post = Post::with(['comments.CommentReply','comments.CommentReply.user',
+            'comments.user','author'])->find($id);
         return $post->toArray();
     }
 
