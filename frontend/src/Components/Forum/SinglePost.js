@@ -21,10 +21,16 @@ const SinglePost = () =>{
                     <div key={item.id} >
                         <div style={{padding:"15px",borderRadius:"7px",backgroundColor:"yellow"
                             }}>
-                            <div style={{display:"flex",alignItems:"center"}}>
+                            <div style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
+                                <div style={{display:"flex",alignItems:"center"}}>
                                 <img style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
                                     width:'30px',backgroundColor:"black"}} src={item.author.avatar}/>
                                 <h6 style={{alignItems:"center",paddingTop:"10px"}}>{item.title}</h6>
+                                </div>
+                                <div style={{color:"whitesmoke" ,cursor:"pointer"}}>
+                                    <a>Reply</a>
+                                </div>
+
                             </div>
 
                         {item.body}>>>>
@@ -37,16 +43,21 @@ const SinglePost = () =>{
                                    paddingTop:"10px"
                                }}>
                               <div style={{padding:"15px",borderRadius:"7px", backgroundColor:"red"}}>
-                                  <div style={{display:"flex",alignItems:"center"}}>
+                                  <div style={{display:"flex",alignItems:"center" ,justifyContent:"space-between"}}>
+                                      <div style={{display:"flex",alignItems:"center"}}>
                                       <img style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
                                           width:'30px',backgroundColor:"black"}} src={comment.user.avatar}/>
                                       <h6 style={{alignItems:"center",paddingTop:"10px",
                                           fontWeight:"bold",fontSize:'15px'}}>{comment.user.first_name} {comment.user.last_name}</h6>
                                   </div>
+                                      <div style={{color:"whitesmoke" ,cursor:"pointer"}}>
+                                          <a>Reply</a>
+                                      </div>
+
+                                  </div>
                               {comment.body}
                               </div>
-                              {comment.comment_reply.map (
-                                  reply => (
+                              {comment.comment_reply.map (reply => (
                                   <div key={reply.id}
                                        style={{
                                            paddingLeft:"30%",
@@ -55,13 +66,18 @@ const SinglePost = () =>{
                                   >
 
                                   <div style={{padding:"15px",borderRadius:"7px", backgroundColor:"green"}}>
-                                      <div style={{display:"flex",alignItems:"center"}}>
+                                      <div style={{display:"flex",alignItems:"center" ,justifyContent:"space-between"}}>
+                                          <div style= {{display:"flex",alignItems:"center"}}>
                                           <img style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
                                               width:'30px',backgroundColor:"black"}} src={reply.user.avatar}/>
-                                          <h6 style={{alignItems:"center",
-                                              paddingTop:"10px",fontWeight:"bold",fontSize:'15px'
+                                          <h6 style={{alignItems:"center", paddingTop:"10px",fontWeight:"bold",fontSize:'15px'
                                           }}>{reply.user.first_name} {reply.user.last_name}</h6>
+                                          </div>
+                                          <div style={{color:"whitesmoke" ,cursor:"pointer"}}>
+                                              <a>Reply</a>
+                                          </div>
                                       </div>
+
                                       {reply.body}
                                   </div>
                                   </div>
@@ -73,6 +89,10 @@ const SinglePost = () =>{
                     </div>
 
             ))}
+            </div>
+            <div className="comments-box">
+                <input id="comments-input" type="text" placeholder="Add a comment..." />
+                <button  type="submit" className="comments-button">Post</button>
             </div>
         </Wrapper>
     )
