@@ -19,7 +19,7 @@ const SinglePost = () =>{
 
             {SinglePost.map(item => (
                     <div key={item.id} >
-                        <div style={{padding:"15px",borderRadius:"7px",backgroundColor:"yellow"
+                        <div style={{padding:"15px",borderRadius:"7px",backgroundColor:"purple"
                             }}>
                             <div style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
                                 <div style={{display:"flex",alignItems:"center"}}>
