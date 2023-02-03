@@ -7,6 +7,8 @@ use App\Http\Resources\PostResource;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
@@ -14,7 +16,7 @@ class PostsController extends Controller
     public function index()
     {
 //        return Post::with("author")->get();
-        $post = Post::with("author")->get();
+        $post = Post::with("author")->latest()->get();
         return PostResource::collection($post);
 
     }
@@ -22,10 +24,15 @@ class PostsController extends Controller
 
     public function store(PostRequest $request)
     {
+//        Post::create( $request->validated());
+        $title = $request->input('title');
+//        $post = Auth::user()->Post::create([
         $post = Post::create([
-            'title' => $request->input('title'),
+            'user_id'=>'2',
+            'title' => $title,
             'body' => $request->input('body'),
             'thumbnail' => $request->input('thumbnail'),
+            'slug' => Str::slug($title)
 
         ]);
         return response()->json([
@@ -38,20 +45,28 @@ class PostsController extends Controller
 
     public function show($id)
     {
-        $post = Post::with(['comments.CommentReply','comments.CommentReply.user',
-            'comments.user','author'])->find($id);
+        $post = Post::with(['comments.CommentReply',
+            'comments.CommentReply.user',
+            'comments.user',
+            'author'
+        ])->find($id);
         return $post;
     }
 
 
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        return $post;
     }
 
 
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return response()->json([
+            'message' => 'Post Deleted'
+        ]);
+
     }
 }

@@ -22,5 +22,11 @@ Route::post('/trial',function (){
 Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);
 
+Route::middleware(['auth'])->group(function (){
+
+});
 
 Route::apiResource('posts' ,PostsController::class);
+
+
+

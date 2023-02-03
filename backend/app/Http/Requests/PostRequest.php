@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class PostRequest extends FormRequest
 {
@@ -17,7 +18,8 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => ['required'],
-            'body' => ['required']
+            'body' => ['required',Rule::unique("posts")->ignore($this->post)]
+
         ];
     }
 }
