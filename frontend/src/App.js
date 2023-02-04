@@ -11,6 +11,7 @@ import Quiz from "./Components/Quiz/Quiz";
 import {Suspense} from "react";
 import Notes from "./Components/Notes/Notes";
 import SinglePost from "./Components/Forum/SinglePost";
+import CreatePost from "./Components/Forum/CreatePost";
 
 
 
@@ -31,9 +32,14 @@ function App() {
                     <Route path="/notes" element={<Notes/>}/>
                     <Route path="/" element={<Quiz/>}/>
                     <Route path="/quiz" element={<Quiz/>}/>
+
+                    <Route path="/register" element={<Register/>}/>
+
+                    {/*forum*/}
                     <Route path="/forum" element={<Forum/>}/>
                     <Route path="/forum/:id"  element={<SinglePost/>}/>
-                    <Route path="/register" element={<Register/>}/>
+                    <Route path="/forum/create" element={<CreatePost/>}/>
+
                 </Routes>
             </Suspense>
         </div>

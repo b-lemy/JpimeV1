@@ -45,6 +45,12 @@ const Forum = () => {
         <Wrapper>
             <section className="row section">
                 <div className=" col-lg-8 col-md-8  ">
+                    <div className="new_post">
+                        <Link to={'/forum/create'} className="new_post_link">
+                            New Post
+                        </Link>
+
+                    </div>
                     {post.map(item => (
                         <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>
                         <div className="start_left" >
