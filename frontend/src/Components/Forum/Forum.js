@@ -14,9 +14,16 @@ const Forum = () => {
     const [post, setPost] = useState([])
 
     useEffect(() => {
-        axios.get("http://127.0.0.1:8000/api/posts")
-            .then((response) =>setPost(response.data.data))
-                // setPost(response.data))
+
+        const getPosts = async () =>{
+            const apiPosts = await axios.get("http://127.0.0.1:8000/api/posts");
+            setPost(apiPosts.data.data)
+            // setPost(response.data))
+        }
+        getPosts();
+        // axios.get("http://127.0.0.1:8000/api/posts")
+        //     .then((response) =>setPost(response.data.data))
+        //         // setPost(response.data))
     }, [])
 
     const [title, setTitle] = useState('')
