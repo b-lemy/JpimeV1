@@ -41,18 +41,17 @@
 /*forum*/
 
 .new_post{
-
     margin: 7px;
     display: flex;
-    justify-content: end;
-
+    justify-content: flex-end;
 }
+
 .new_post_link{
     background-color: #2B74DD;
     padding: 10px;
     color: #fefefe;
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 7px;
 }
 .new_post_link:hover{
     color: #fefefe;

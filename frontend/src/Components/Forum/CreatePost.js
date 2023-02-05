@@ -1,23 +1,10 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import Wrapper from "../Layout/Wrapper";
 import "./Forum.css"
-import {Link} from "react-router-dom";
-import axios from "axios";
+import {PostContext} from "../../StoreContext/Forum-context";
 
 const CreatePost = () => {
-    const [postTitle , setPostTitle] = useState("")
-    const [postBody , setPostBody] = useState("")
-    console.log(postTitle)
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-        axios.post("http://127.0.0.1:8000/api/posts", {
-            title: postTitle,
-            body: postBody,
-        }).
-        then((response) => console.log("already"))
-    }
-
+    const {setPostTitle ,setPostBody , postTitle,postBody,onSubmit} = useContext(PostContext)
 
     return (
         <Wrapper>

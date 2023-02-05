@@ -11,7 +11,7 @@ const SinglePost = () =>{
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/api/posts/${id}`)
             .then(response => setSinglePost([response.data]))
-    }, [])
+    }, [id])
 
     return(
         <Wrapper>
@@ -23,16 +23,16 @@ const SinglePost = () =>{
                             }}>
                             <div style={{display:"flex",alignItems:"center", justifyContent:"space-between"}}>
                                 <div style={{display:"flex",alignItems:"center"}}>
-                                <img style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
+                                <img alt="i"
+                                    style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
                                     width:'30px',backgroundColor:"black"}} src={item.author.avatar}/>
                                 <h6 style={{alignItems:"center",paddingTop:"10px"}}>{item.title}</h6>
                                 </div>
                                 <div style={{color:"whitesmoke" ,cursor:"pointer"}}>
-                                    <a>Reply</a>
+                                    Reply
                                 </div>
 
                             </div>
-
                         {item.body}>>>>
                         </div>
 
@@ -45,13 +45,13 @@ const SinglePost = () =>{
                               <div style={{padding:"15px",borderRadius:"7px", backgroundColor:"red"}}>
                                   <div style={{display:"flex",alignItems:"center" ,justifyContent:"space-between"}}>
                                       <div style={{display:"flex",alignItems:"center"}}>
-                                      <img style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
+                                      <img  alt="i" style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
                                           width:'30px',backgroundColor:"black"}} src={comment.user.avatar}/>
                                       <h6 style={{alignItems:"center",paddingTop:"10px",
                                           fontWeight:"bold",fontSize:'15px'}}>{comment.user.first_name} {comment.user.last_name}</h6>
                                   </div>
                                       <div style={{color:"whitesmoke" ,cursor:"pointer"}}>
-                                          <a>Reply</a>
+                                          Reply
                                       </div>
 
                                   </div>
@@ -68,13 +68,13 @@ const SinglePost = () =>{
                                   <div style={{padding:"15px",borderRadius:"7px", backgroundColor:"green"}}>
                                       <div style={{display:"flex",alignItems:"center" ,justifyContent:"space-between"}}>
                                           <div style= {{display:"flex",alignItems:"center"}}>
-                                          <img style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
+                                          <img alt="i" style={{borderRadius: '70%',marginRight: '10px', height: '30px' ,
                                               width:'30px',backgroundColor:"black"}} src={reply.user.avatar}/>
                                           <h6 style={{alignItems:"center", paddingTop:"10px",fontWeight:"bold",fontSize:'15px'
                                           }}>{reply.user.first_name} {reply.user.last_name}</h6>
                                           </div>
                                           <div style={{color:"whitesmoke" ,cursor:"pointer"}}>
-                                              <a>Reply</a>
+                                              Reply
                                           </div>
                                       </div>
 

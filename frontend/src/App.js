@@ -27,18 +27,18 @@ function App() {
                 <div> Loading component</div>
             }>
                 <Routes>
-                    <Route path="/about"  element={<About/>} />
-                    <Route path="/login" element={<Login/>}/>
-                    <Route path="/notes" element={<Notes/>}/>
-                    <Route path="/" element={<Quiz/>}/>
-                    <Route path="/quiz" element={<Quiz/>}/>
+                    <Route exact path="/about"  element={<About/>} />
+                    <Route exact path="/login" element={<Login/>}/>
+                    <Route exact path="/notes" element={<Notes/>}/>
+                    <Route exact path="/" element={<Quiz/>}/>
+                    <Route exact path="/quiz" element={<Quiz/>}/>
 
-                    <Route path="/register" element={<Register/>}/>
+                    <Route exact path="/register" element={<Register/>}/>
 
                     {/*forum*/}
-                    <Route path="/forum" element={<Forum/>}/>
-                    <Route path="/forum/:id"  element={<SinglePost/>}/>
-                    <Route path="/forum/create" element={<CreatePost/>}/>
+                    <Route exact path="/forum" element={<Forum/>}/>
+                    <Route exact path="/forum/:id"  element={<SinglePost/>}/>
+                    <Route exact path="/forum/create" element={<CreatePost/>}/>
 
                 </Routes>
             </Suspense>

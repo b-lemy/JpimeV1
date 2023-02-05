@@ -1,33 +1,32 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-
 import Wrapper from "../Layout/Wrapper";
-import {PostContext} from "../../StoreContext/Forum-context";
+// import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
-import {comment} from "postcss";
 import {Link} from "react-router-dom";
+axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
-    const postCtx = useContext(PostContext);
+    // const postCtx = useContext(PostContext);
 
     const [post, setPost] = useState([])
 
     useEffect(() => {
 
         const getPosts = async () =>{
-            const apiPosts = await axios.get("http://127.0.0.1:8000/api/posts");
+            const apiPosts = await axios.get("posts");
             setPost(apiPosts.data.data)
             // setPost(response.data))
         }
         getPosts();
-        // axios.get("http://127.0.0.1:8000/api/posts")
+        // axios.get("posts")
         //     .then((response) =>setPost(response.data.data))
         //         // setPost(response.data))
     }, [])
 
-    const [title, setTitle] = useState('')
-    const [body, setBody] = useState('')
+    // const [title, setTitle] = useState('')
+    // const [body, setBody] = useState('')
 
     // const posttitle = useRef();
     // const postbody = useRef();
@@ -54,7 +53,7 @@ const Forum = () => {
                         <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>
                         <div className="start_left" >
                             <div style={{display:"flex",alignItems:"center"}}>
-                                <img style={{borderRadius: '70%',marginRight: '10px', height: '40px' ,
+                                <img alt="i" style={{borderRadius: '70%',marginRight: '10px', height: '40px' ,
                                     width:'40px'}} src={item.avatar}/>
 
                                 <div style={{display:"flex",flexDirection:"column",marginBottom:'2px'}}>
