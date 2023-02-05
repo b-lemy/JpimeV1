@@ -49,7 +49,6 @@ const Forum = () => {
                         <Link to={'/forum/create'} className="new_post_link">
                             New Post
                         </Link>
-
                     </div>
                     {post.map(item => (
                         <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>

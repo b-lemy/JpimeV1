@@ -52,11 +52,15 @@
     padding: 10px;
     color: #fefefe;
     text-decoration: none;
-    border-radius: 7px;
+    border-radius: 3px;
+}
+.new_post_link:hover{
+    color: #fefefe;
+
 }
 
 /*creatPost*/
-input{
+.input_title{
     background-color: #2B74DD;
 }
 
@@ -78,7 +82,7 @@ input{
     outline: none;
 }
 .body_post{
-    height: 80vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,7 +96,18 @@ input{
     margin: 15px;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 45%;
+    /*box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;*/
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
 
+.post_title{
+    width: 50%;
+    border: none;
+    margin-left: 10px;
+    border-radius: 3px;
+    justify-content: center;
 }

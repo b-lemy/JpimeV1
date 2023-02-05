@@ -11,7 +11,7 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
     const [phone, setPhone] = useState("")
-    console.log(first)
+
 
     const onSubmit = (e) => {
         e.preventDefault()
