@@ -65,11 +65,17 @@ export const ForumProvider = ({children}) => {
     }
 
     const deletePostHandler = (id) => {
-        dispatchForum({
-            type: 'DELETE_POST',
-            id: id
-        })
+        if(!window.confirm("Are you sure")){
+            return;
+        }
+        axios.delete("posts/" + id)
+            .then((response) => {
+                console.log(response.status)
 
+                if (response.status === 200) {
+                    window.location.reload(true)
+                }
+            });
     }
 
     const postContext = {

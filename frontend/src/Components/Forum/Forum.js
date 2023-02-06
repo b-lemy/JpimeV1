@@ -1,14 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import Wrapper from "../Layout/Wrapper";
-// import {PostContext} from "../../StoreContext/Forum-context";
+ import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
-    // const postCtx = useContext(PostContext);
+    const {deletePost} = useContext(PostContext);
 
     const [post, setPost] = useState([])
 
@@ -50,8 +50,8 @@ const Forum = () => {
                         </Link>
                     </div>
                     {post.map(item => (
-                        <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} key={item.id}>
-                        <div className="start_left" >
+                        <div className="start_left" key={item.id}>
+                        <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} >
                             <div style={{display:"flex",alignItems:"center"}}>
                                 <img alt="i" style={{borderRadius: '70%',marginRight: '10px', height: '40px' ,
                                     width:'40px'}} src={item.avatar}/>
@@ -67,9 +67,14 @@ const Forum = () => {
                             <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
                                 {item.title}</h6>
                             {item.body}...
-                        </div>
                         </Link>
+
+                            <button onClick={()=>deletePost(item.id)}>Delete</button>
+
+                        </div>
+
                     ))}
+
                 </div>
                 <div className=" col-lg-4 col-md-4 ">
                     <div className="start_right">
