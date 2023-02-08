@@ -69,6 +69,7 @@ const Forum = () => {
                             {item.body}...
                         </Link>
                             <div style={{display:"flex",justifyContent:"flex-end"}}>
+                                <button style={{marginRight:"12px"}} >Edit</button>
 
                             <button onClick={()=>deletePost(item.id)}>Delete</button>
                             </div>
@@ -91,7 +92,7 @@ const Forum = () => {
                     </div>
                 </div>
 
-
+            </section>
         </Wrapper>
     )
 }
