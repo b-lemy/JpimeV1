@@ -91,7 +91,7 @@ const Forum = () => {
                     </div>
                 </div>
 
-            </section>
+
         </Wrapper>
     )
 }
