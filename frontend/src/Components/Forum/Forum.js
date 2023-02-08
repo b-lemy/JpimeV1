@@ -68,8 +68,10 @@ const Forum = () => {
                                 {item.title}</h6>
                             {item.body}...
                         </Link>
+                            <div style={{display:"flex",justifyContent:"flex-end"}}>
 
                             <button onClick={()=>deletePost(item.id)}>Delete</button>
+                            </div>
 
                         </div>
 
