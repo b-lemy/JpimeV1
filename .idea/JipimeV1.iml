@@ -135,9 +135,10 @@
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/league/event" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/laravel/passport" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/psr-http-message-bridge" />
-      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/doctrine/deprecations" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/psr/clock" />
       <excludeFolder url="file://$MODULE_DIR$/backend/vendor/barryvdh/laravel-cors" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/backend/vendor/guzzlehttp/uri-template" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -16,7 +16,7 @@ const SinglePost = () => {
     return (
         <Wrapper>
             <section className="row section">
-                <div className=" col-lg-8 col-md-8" style={{backgroundColor: "#ecf2f8"}}>
+                <div className=" col-lg-8 col-md-8" >
 
                     {SinglePost.map(item => (
                         <div key={item.id}>
