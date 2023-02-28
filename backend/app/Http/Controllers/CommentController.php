@@ -11,8 +11,8 @@ class CommentController extends Controller
 
     public function index(Post $post)
     {
-        $users = Post::find(1);
-        return $users;
+//        $users = Post::find(1);
+//        return $users;
     }
 
 
