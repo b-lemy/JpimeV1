@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import "./Auth.css"
 import AuthWrapper from "./AuthWrapper";
 import {useNavigate} from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "axios";
+// import axios from "../../api/axios";
 
 
 const Login = () => {
@@ -12,15 +13,15 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        axios.post("/login", {
+        axios.post("http://127.0.0.1:8000/api/login", {
             email,
-            password,
-        },{withCredentials:true})
+            password
+        })
             .then((response) => {
                 console.log(response.status)
                 // console.log("post created")
                 if (response.status === 200) {
-                    navigate("/forum")
+                    navigate("/")
                 }
             })
             .catch(e =>{
