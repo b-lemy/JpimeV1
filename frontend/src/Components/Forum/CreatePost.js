@@ -26,12 +26,8 @@ const CreatePost = () => {
                 <label htmlFor="post" className="">PostBody</label>
                 <textarea  className="text_area" id="message" rows="4"
                            placeholder=" Fill in the Description"
-
                            value={postBody}
-                           onChange={(e)=>{
-                               setPostBody(e.target.value)
-                           }}
-                ></textarea>
+                           onChange={(e)=>{ setPostBody(e.target.value)}}/>
                 </div>
                 <div className="new_post">
                     <button type="submit" className="new_post_link">
