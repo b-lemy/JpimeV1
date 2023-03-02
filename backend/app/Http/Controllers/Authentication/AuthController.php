@@ -26,14 +26,15 @@ class AuthController extends Controller
             $token = $user->createToken('token')->accessToken;
             return \response([
                 'token' => $token,
+                'token_type' => 'Bearer'
             ]);
         }
-        else {
-            return response([
-                'error' => 'invalid username or password credentials'
-            ], Response::HTTP_UNAUTHORIZED);
-        }
+        return response()->json([
+            'message' => 'Invalid email or password'
+        ], 401);
     }
+
+
 
     public function register(RegisterRequest $request)
     {

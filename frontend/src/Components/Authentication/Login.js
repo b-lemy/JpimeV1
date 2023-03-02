@@ -13,17 +13,20 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const res = axios.post("http://127.0.0.1:8000/api/login", {
+        axios.post("http://127.0.0.1:8000/api/login", {
             email,
             password
         })
              .then((response) => {
-                    console.log(response.data)
+                 const accessToken = response.data;
+                 console.log('Access token:', accessToken)
             })
             .catch(error =>{
-                console.error(error)
+                console.error(error.response.data.message)
             })
+
     }
+
 
     return(
         <AuthWrapper>
