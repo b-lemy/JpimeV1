@@ -7,9 +7,10 @@ import axios from "axios";
 
 
 const Login = () => {
-       const [email , setEmail] = useState("");
-       const [password , setPassword] = useState("");
-       const navigate = useNavigate()
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate()
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -17,42 +18,39 @@ const Login = () => {
             email,
             password
         })
-             .then((response) => {
-                 const accessToken = response.data;
-                 console.log('Access token:', accessToken)
+            .then((response) => {
+                const accessToken = response.data;
+                console.log('Access token:', accessToken)
+                navigate('/')
             })
-            .catch(error =>{
-                console.error(error.response.data.message)
+            .catch(error => {
+                // console.error(error.response.data.message)
+                setError(error.response.data)
             })
-
     }
-
-
-    return(
+    return (
         <AuthWrapper>
-        <div className="body">
-            <form  className="container" onSubmit={onSubmit}>
-                <h5 className="title">Login.</h5>
-                <label>EmailAddress</label>
-                <input
-                    placeholder="Email"
-                    value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <span>error</span>
-                <label>Password</label>
-                <input
-                    placeholder="password"
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <span>error</span>
-                <button  type="submit">Login</button>
-            </form>
-        </div>
+            <div className="body">
+                <form className="container" onSubmit={onSubmit}>
+                    <h5 className="title">Login.</h5>
+                    {error && <span style={{textAlign: "center", color: "red"}}>{error.message}</span>}
+                    <label>EmailAddress</label>
+                    <input
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <label>Password</label>
+                    <input
+                        placeholder="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         </AuthWrapper>
     )
 }
-
 export default Login
