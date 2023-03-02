@@ -24,13 +24,15 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::User();
             $token = $user->createToken('token')->accessToken;
-            return [
-                'token' => $token
-            ];
+            return \response([
+                'token' => $token,
+            ]);
         }
-        return response([
-            'error' => 'invalid credentials'
-        ], Response::HTTP_UNAUTHORIZED);
+        else {
+            return response([
+                'error' => 'invalid username or password credentials'
+            ], Response::HTTP_UNAUTHORIZED);
+        }
     }
 
     public function register(RegisterRequest $request)
