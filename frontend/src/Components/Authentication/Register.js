@@ -14,7 +14,6 @@ const Register = () => {
     const [error , setErrors] = useState("")
     const navigate = useNavigate()
 
-
     const onSubmit = (e) => {
         e.preventDefault()
         axios.post("http://127.0.0.1:8000/api/register", {
@@ -28,7 +27,6 @@ const Register = () => {
                 console.log("already")
             navigate("/login")
         }
-
         )
             .catch((e) =>{
                 if(e.response.status === 422) {

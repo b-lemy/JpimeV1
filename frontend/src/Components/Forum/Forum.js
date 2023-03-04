@@ -1,10 +1,10 @@
 import React, {useContext, useEffect, useState} from "react";
-import axios from "axios";
+import axios from "../../api/axios"
 import Wrapper from "../Layout/Wrapper";
  import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
-axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
+// axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
@@ -16,7 +16,7 @@ const Forum = () => {
             setPost(apiPosts.data.data)
         }
         getPosts();
-    }, [post])
+    }, [])
 
 
     return (

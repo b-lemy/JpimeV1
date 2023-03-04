@@ -24,11 +24,9 @@ class PostsController extends Controller
 
     public function store(PostRequest $request)
     {
-//        Post::create( $request->validated());
         $title = $request->input('title');
-//        $post = Auth::user()->Post::create([
         $post = Post::create([
-            'user_id'=>'2',
+            'user_id'=>Auth::user()->id,
             'title' => $title,
             'body' => $request->input('body'),
             'thumbnail' => $request->input('thumbnail'),

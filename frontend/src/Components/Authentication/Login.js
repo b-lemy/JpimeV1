@@ -19,7 +19,8 @@ const Login = () => {
             password
         })
             .then((response) => {
-                const accessToken = response.data;
+                const accessToken = response.data.token;
+                localStorage.setItem('token', accessToken);
                 console.log('Access token:', accessToken)
                 navigate('/')
             })
