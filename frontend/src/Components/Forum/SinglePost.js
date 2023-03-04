@@ -9,7 +9,8 @@ const SinglePost = () => {
     const [SinglePost, setSinglePost] = useState([])
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/api/posts/${id}`)
+        const token = localStorage.getItem('token');
+        axios.get(`http://127.0.0.1:8000/api/posts/${id}`,{ headers: { Authorization: `Bearer ${token}` }})
             .then(response => setSinglePost([response.data]))
     }, [id])
 
