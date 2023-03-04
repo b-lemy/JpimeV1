@@ -22,11 +22,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         if (Auth::attempt($request->only('email', 'password'))) {
-            $user = Auth::User();
-            $token = $user->createToken('token')->accessToken;
+//            $user = Auth::User();
+            $AToken = Auth::user()->createToken('token')->accessToken;
+            $expiresAt = now()->addDays(7); // set expiration time to 7 days from now
+            $token = $request->user()->token();
+            $token->expires_at = $expiresAt;
+            $token->save();
             return \response([
-                'token' => $token,
-                'token_type' => 'Bearer'
+                'token' => $AToken
             ]);
         }
         return response()->json([
