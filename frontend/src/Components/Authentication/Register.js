@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import "./Auth.css"
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import AuthWrapper from "./AuthWrapper";
 
@@ -11,6 +11,8 @@ const Register = () => {
     const [password, setPassword] = useState("")
     const [confirm, setConfirm] = useState("")
     const [phone, setPhone] = useState("")
+    const [error , setErrors] = useState("")
+    const navigate = useNavigate()
 
 
     const onSubmit = (e) => {
@@ -22,7 +24,18 @@ const Register = () => {
             phone: phone,
             password: password,
             confirm_password: confirm
-        }).then((response) => console.log("already"))
+        }).then((response) => {
+                console.log("already")
+            navigate("/login")
+        }
+
+        )
+            .catch((e) =>{
+                if(e.response.status === 422) {
+                    setErrors(e.response.data.errors)
+                    console.error(e.response.data.errors)
+                }
+            })
     }
     return (
         <AuthWrapper>
@@ -37,32 +50,22 @@ const Register = () => {
                         onChange={(e) => setFirst(e.target.value)}
 
                     />
+                    {error.first_name &&  <span style={{textAlign: "center", color: "red"}}>{error.first_name} </span> }
+
                     <label className="mt-3">LastName</label>
                     <input
                         placeholder="LastName"
                         value={last}
                         onChange={(e) => setLast(e.target.value)}
                     />
+                    {error.last_name &&  <span style={{textAlign: "center", color: "red"}}>{error.last_name} </span> }
                     <label>EmailAddress</label>
                     <input
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
-                    <label>Password</label>
-                    <input
-                        placeholder="password"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <label>ConfirmPassword</label>
-                    <input
-                        placeholder="ConfirmPassword"
-                        type="password"
-                        value={confirm}
-                        onChange={(e) => setConfirm(e.target.value)}
-                    />
+                    {error.email &&  <span style={{textAlign: "center", color: "red"}}>{error.email} </span> }
                     <label>PhoneNumber</label>
                     <input
                         placeholder="phoneNumber"
@@ -71,6 +74,24 @@ const Register = () => {
                             setPhone(e.target.value)
                         }}
                     />
+                    {error.phone &&  <span style={{textAlign: "center", color: "red"}}>{error.phone} </span> }
+                    <label>Password</label>
+                    <input
+                        placeholder="password"
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {error.password &&  <span style={{textAlign: "center", color: "red"}}>{error.password} </span> }
+                    <label>ConfirmPassword</label>
+                    <input
+                        placeholder="ConfirmPassword"
+                        type="password"
+                        value={confirm}
+                        onChange={(e) => setConfirm(e.target.value)}
+                    />
+                    {error.confirm_password &&  <span style={{textAlign: "center", color: "red"}}>{error.confirm_password} </span> }
+
                     <button type="submit">Submit</button>
                     <div className="foot">
                         <small className="row"> I have an account already </small>

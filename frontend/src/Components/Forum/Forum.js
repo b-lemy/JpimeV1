@@ -9,37 +9,16 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 const Forum = () => {
     const {deletePost} = useContext(PostContext);
-
     const [post, setPost] = useState([])
-
     useEffect(() => {
-
         const getPosts = async () =>{
             const apiPosts = await axios.get("posts");
             setPost(apiPosts.data.data)
-            // setPost(response.data))
         }
         getPosts();
-        // axios.get("posts")
-        //     .then((response) =>setPost(response.data.data))
-        //         // setPost(response.data))
-    }, [])
-
-    // const [title, setTitle] = useState('')
-    // const [body, setBody] = useState('')
-
-    // const posttitle = useRef();
-    // const postbody = useRef();
+    }, [post])
 
 
-    // const addPost = (e) => {
-    //     e.preventDefault()
-    //     postCtx.addPost({
-    //             title: title,
-    //             body: body
-    //         }
-    //     )
-    // }
     return (
         <Wrapper>
             <section className="row section">
@@ -133,3 +112,18 @@ export default Forum;
 //     </div>
 //
 // </div>
+// const [title, setTitle] = useState('')
+// const [body, setBody] = useState('')
+
+// const posttitle = useRef();
+// const postbody = useRef();
+
+
+// const addPost = (e) => {
+//     e.preventDefault()
+//     postCtx.addPost({
+//             title: title,
+//             body: body
+//         }
+//     )
+// }

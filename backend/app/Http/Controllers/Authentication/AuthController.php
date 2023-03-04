@@ -34,8 +34,6 @@ class AuthController extends Controller
         ], 401);
     }
 
-
-
     public function register(RegisterRequest $request)
     {
         $user = User::create([
@@ -44,10 +42,7 @@ class AuthController extends Controller
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'password' => Hash::make($request->input('password')),
-
-
         ]);
-
         return response($user, Response::HTTP_CREATED);
 
 
