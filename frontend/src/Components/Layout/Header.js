@@ -1,8 +1,10 @@
 import React, {Fragment, useEffect, useState} from "react";
 import "./Header.css"
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
+import {nanoid} from "@reduxjs/toolkit";
 
 const Header = () => {
+    const navigate = useNavigate()
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
@@ -36,13 +38,11 @@ const Header = () => {
                     <Link to="" className="links-to">LeaderBoard</Link>
                     <Link to="" className="links-to">News and Updates</Link>
                     {isLoggedIn ?
-                        (
-                        <Link to="/login" className="links-to">LogOut</Link>)
+                        (<Link to="/login" onClick={handleLogout} className="links-to">LogOut</Link>)
                         :
                         (<Link to="/login" className="links-to">Login</Link>)
                     }
                 </div>
-
             </header>
         </Fragment>
     )
