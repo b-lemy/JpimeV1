@@ -44,6 +44,7 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::with(['comments.CommentReply',
+            'comments.CommentReply.CommentReply',  //to be tested tomorrow 7/03/2023
             'comments.CommentReply.user',
             'comments.user',
             'author'
