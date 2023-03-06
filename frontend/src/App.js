@@ -10,7 +10,7 @@ import {Suspense} from "react";
 import Notes from "./Components/Notes/Notes";
 import SinglePost from "./Components/Forum/SinglePost";
 import CreatePost from "./Components/Forum/CreatePost";
-// //Lazy Loading implementation
+//Lazy Loading implementation
 // const Login = lazy(() => import("./Components/Authentication/Login"))
 
 function App() {
@@ -34,14 +34,10 @@ function App() {
                     <Route exact path="/notes" element={<Notes/>}/>
                     <Route exact path="/" element={<Quiz/>}/>
                     <Route exact path="/quiz" element={<Quiz/>}/>
-
-                    <Route exact path="/register" element={<Register/>}/>
-
                     {/*forum*/}
                     <Route exact path="/forum" element={<Forum/>}/>
                     <Route exact path="/forum/:id" element={<SinglePost/>}/>
                     <Route exact path="/forum/create" element={<CreatePost/>}/>
-
                 </Routes>
             </Suspense>
         </div>
