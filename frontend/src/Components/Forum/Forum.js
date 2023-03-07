@@ -4,6 +4,7 @@ import Wrapper from "../Layout/Wrapper";
  import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
+import Sidebar from "../Layout/Sidebar";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
@@ -59,18 +60,8 @@ const Forum = () => {
 
                 </div>
                 <div className=" col-lg-4 col-md-4 ">
-                    <div className="start_right">
-                        Tags
-                        <div className="tag">
-                            <button className="tags"> Most Recent</button>
-                            <button className="tags">Most Likes</button>
-                            <button className="tags">Most Comments</button>
-                            <button className="tags">Most Interaction</button>
-                        </div>
-
-                    </div>
+                    <Sidebar/>
                 </div>
-
             </section>
         </Wrapper>
     )

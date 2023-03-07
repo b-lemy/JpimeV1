@@ -1,12 +1,8 @@
 import React, {Fragment, useEffect, useState} from "react";
 import "./Header.css"
-import {Link,useNavigate} from "react-router-dom";
-import {nanoid} from "@reduxjs/toolkit";
-
+import {Link} from "react-router-dom";
 const Header = () => {
-    const navigate = useNavigate()
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
     useEffect(() => {
         const token = localStorage.getItem('token');
 
