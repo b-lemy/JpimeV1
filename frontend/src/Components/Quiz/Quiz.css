@@ -1,24 +1,57 @@
 .QuizButtons{
     display: flex;
     justify-content: space-around;
-    padding: 5px;
+    padding-bottom: 30px;
 }
 .Btns{
-    background-color: deepskyblue;
+    background-color: #5c616e;
     padding: 10px;
     border-radius: 4px;
-
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+}
+.Btns:hover{
+    opacity: 80%;
+    color: inherit;
 }
 
 section{
-    border: 1px solid red;
+    border-top: 1px solid red;
+    padding-top: 20px;
     position: relative;
 }
-span{
+.spn{
     position: absolute;
+    color: inherit;
     top: 10px;
     right: 10px;
-    border: 1px solid red;
-    border-radius: 50%;
-    padding: 10px;
+    border: 1px solid #5c616e;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+
+
+section div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+table {
+
+
+    width: 80%;
+    /*height: 200px;*/
+}
+
+th {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+td {
+    text-align: center;
 }
