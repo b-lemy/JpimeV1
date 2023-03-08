@@ -1,34 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import "./Auth.css"
 import AuthWrapper from "./AuthWrapper";
-import {useNavigate} from "react-router-dom";
-import axios from "axios";
+
+import {AuthContext} from "../../StoreContext/Auth-context";
 // import axios from "../../api/axios";
 
 
 const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const navigate = useNavigate()
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-        axios.post("http://127.0.0.1:8000/api/login", {
-            email,
-            password
-        })
-            .then((response) => {
-                const accessToken = response.data.token;
-                localStorage.setItem('token', accessToken);
-                console.log('Access token:', accessToken)
-                navigate('/')
-            })
-            .catch(error => {
-                // console.error(error.response.data.message)
-                setError(error.response.data)
-            })
-    }
+    const {error,setEmail,setPassword,onSubmit,email,password} = useContext(AuthContext)
     return (
         <AuthWrapper>
             <div className="body">

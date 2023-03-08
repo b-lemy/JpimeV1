@@ -9,7 +9,7 @@
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
-    color: inherit;
+    color: white;
 }
 .Btns:hover{
     opacity: 80%;
@@ -35,20 +35,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 table {
-
-
     width: 80%;
-    /*height: 200px;*/
 }
-
 th {
     border-bottom: 1px solid black;
     text-align: center;
 }
-
 td {
     text-align: center;
 }

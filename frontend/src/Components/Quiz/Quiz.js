@@ -1,9 +1,12 @@
-import React from "react";
+import React, {useContext} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 import {Link} from "react-router-dom";
+import {AuthContext} from "../../StoreContext/Auth-context";
 
 const Quiz = () => {
+    const{loginUser} = useContext(AuthContext);
+
     return (
         <Wrapper>
             <div className="QuizButtons">
@@ -11,6 +14,8 @@ const Quiz = () => {
                 <Link to='' className="Btns">Timed Quiz</Link>
                 <Link to='' className="Btns">Survival Quiz</Link>
             </div>
+            <p>{loginUser.first_name} {loginUser.last_name}</p>
+
             <section className="QuizSection">
                 <h4 style={{textAlign: "center"}}>Quiz Summary</h4>
                 <h6>Recent Quizzes :</h6>
@@ -53,8 +58,8 @@ const Quiz = () => {
 
                 </div>
                 <span className="spn">
-                    <p style={{fontSize: '12px', marginBottom: "0"}}>Average</p>
-                    <p style={{textAlign: "center", marginBottom: "0"}}> 56%</p>
+                    <p style={{fontSize: '12px', marginBottom: "0",fontWeight:"bolder"}}>Average</p>
+                    <p style={{textAlign: "center", marginBottom: "0",fontWeight:"bolder"}}> 56%</p>
                 </span>
             </section>
         </Wrapper>

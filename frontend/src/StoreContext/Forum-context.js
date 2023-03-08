@@ -35,7 +35,7 @@ export const PostContext = createContext(InitialState);
 
 // step 3
 export const ForumProvider = ({children}) => {
-    const [postState, dispatchForum] = useReducer( postReducer , InitialState)
+    const [postState, dispatchForum] = useReducer(postReducer , InitialState)
 
     const [postTitle , setPostTitle] = useState("")
     const [postBody , setPostBody] = useState("")
@@ -48,8 +48,6 @@ export const ForumProvider = ({children}) => {
                 body: postBody,
             })
                 .then((response) => {
-                    console.log(response.status)
-                    // console.log("post created")
                     if (response.status === 200) {
                          navigate("/forum")
                     }

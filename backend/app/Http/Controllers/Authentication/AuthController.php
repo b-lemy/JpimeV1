@@ -29,7 +29,8 @@ class AuthController extends Controller
 //            $token->expires_at = $expiresAt;
 //            $token->save();
             return \response([
-                'token' => $AToken
+                'token' => $AToken,
+                'user' =>$user
             ]);
         }
         return response()->json([
