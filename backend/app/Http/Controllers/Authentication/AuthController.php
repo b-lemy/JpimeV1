@@ -90,4 +90,8 @@ class AuthController extends Controller
 
 
     }
+
+    public function getAuthUser (){
+        return auth()->user();
+    }
 }

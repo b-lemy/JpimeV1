@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 import {Link} from "react-router-dom";

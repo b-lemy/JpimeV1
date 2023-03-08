@@ -1,18 +1,31 @@
 import React, {useContext, useEffect, useState} from "react";
 import axios from "../../api/axios"
 import Wrapper from "../Layout/Wrapper";
- import {PostContext} from "../../StoreContext/Forum-context";
+import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
 import Sidebar from "../Layout/Sidebar";
+// import {AuthContext} from "../../StoreContext/Auth-context";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
     const {deletePost} = useContext(PostContext);
-    const [post, setPost] = useState([])
+    // const {loginUser} = useContext(AuthContext);
+    const [post, setPost] = useState([]);
+    // const [loggedIn, setLoggedIn] = useState(false);
+
+    // function handleLogin() {
+    //     if(loginUser.id === 1){
+    //         setLoggedIn(true);
+    //
+    //     }
+    // }
+
+
+
     useEffect(() => {
-        const getPosts = async () =>{
+        const getPosts = async () => {
             const apiPosts = await axios.get("posts");
             setPost(apiPosts.data.data)
         }
@@ -31,27 +44,30 @@ const Forum = () => {
                     </div>
                     {post.map(item => (
                         <div className="start_left" key={item.id}>
-                        <Link to={`/forum/${item.id}`}  style={{textDecoration: "none",color:"black"}} >
-                            <div style={{display:"flex",alignItems:"center"}}>
-                                <img alt="i" style={{borderRadius: '70%',marginRight: '10px', height: '40px' ,
-                                    width:'40px'}} src={item.avatar}/>
+                            <Link to={`/forum/${item.id}`} style={{textDecoration: "none", color: "black"}}>
+                                <div style={{display: "flex", alignItems: "center"}}>
+                                    <img alt="i" style={{
+                                        borderRadius: '70%', marginRight: '10px', height: '40px',
+                                        width: '40px'
+                                    }} src={item.avatar}/>
 
-                                <div style={{display:"flex",flexDirection:"column",marginBottom:'2px'}}>
-                                    <div style={{marginBottom:'2px',fontWeight:'bolder'}}>
-                                             {item.authorName}</div>
-                                    <p style={{marginBottom:'2px'}}>{item.created}</p>
-                                    <p style={{marginBottom:'2px'}}>{item.authorPhone}</p>
+                                    <div style={{display: "flex", flexDirection: "column", marginBottom: '2px'}}>
+                                        <div style={{marginBottom: '2px', fontWeight: 'bolder'}}>
+                                            {item.authorName}</div>
+                                        <p style={{marginBottom: '2px'}}>{item.created}</p>
+                                        <p style={{marginBottom: '2px'}}>{item.authorPhone}</p>
+                                    </div>
+
                                 </div>
+                                <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
+                                    {item.title}</h6>
+                                {item.body}...
+                            </Link>
+                            <div style={{display: "flex", justifyContent: "flex-end"}}>
 
-                            </div>
-                            <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
-                                {item.title}</h6>
-                            {item.body}...
-                        </Link>
-                            <div style={{display:"flex",justifyContent:"flex-end"}}>
-                                <button style={{marginRight:"12px"}} >Edit</button>
+                                <button style={{marginRight: "12px"}}>Edit</button>
+                                <button onClick={() => deletePost(item.id)}>Delete</button>
 
-                            <button onClick={()=>deletePost(item.id)}>Delete</button>
                             </div>
 
                         </div>
