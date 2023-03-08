@@ -4,7 +4,7 @@
     padding-bottom: 30px;
 }
 .Btns{
-    background-color: #5c616e;
+    background-color: #2B74DD;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
@@ -16,8 +16,8 @@
     color: inherit;
 }
 
-section{
-    border-top: 1px solid red;
+.QuizSection{
+    /*border-top: 1px solid red;*/
     padding-top: 20px;
     position: relative;
 }
@@ -31,10 +31,7 @@ section{
     padding: 5px;
 }
 
-
-
-
-section div{
+.QuizSection div{
     display: flex;
     justify-content: center;
     align-items: center;

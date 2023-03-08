@@ -17,7 +17,7 @@ const Forum = () => {
             setPost(apiPosts.data.data)
         }
         getPosts();
-    }, [post])
+    }, [])
 
 
     return (
