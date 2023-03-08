@@ -2,10 +2,7 @@ import React, {useContext} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 import {Link} from "react-router-dom";
-import {AuthContext} from "../../StoreContext/Auth-context";
-
 const Quiz = () => {
-    const{loginUser} = useContext(AuthContext);
 
     return (
         <Wrapper>
@@ -14,7 +11,6 @@ const Quiz = () => {
                 <Link to='' className="Btns">Timed Quiz</Link>
                 <Link to='' className="Btns">Survival Quiz</Link>
             </div>
-            <p>{loginUser.first_name} {loginUser.last_name}</p>
 
             <section className="QuizSection">
                 <h4 style={{textAlign: "center"}}>Quiz Summary</h4>

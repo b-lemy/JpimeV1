@@ -7,7 +7,7 @@ import {AuthContext} from "../../StoreContext/Auth-context";
 
 
 const Login = () => {
-    const {error,setEmail,setPassword,onSubmit,email,password} = useContext(AuthContext)
+    const {error, setEmail, setPassword, onSubmit, email, password} = useContext(AuthContext)
     return (
         <AuthWrapper>
             <div className="body">

@@ -30,6 +30,7 @@ export const AuthProvider = ({children}) =>{
                 localStorage.setItem('token', accessToken);
                 localStorage.setItem('AuthUser',  JSON.stringify(LoginUser));
                 navigate('/')
+                window.location.reload(true)
             })
             .catch(error => {
                 // console.error(error.response.data.message)
