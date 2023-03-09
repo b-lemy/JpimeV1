@@ -23,22 +23,26 @@ function App() {
     }, [navigate]);
     return (
         <div className="App">
-
-
             <Suspense fallback={
-                <div> Loading component</div>
+                <div>
+                    <div> Loading component</div>
+                    <div> Loading component</div>
+                </div>
+
             }>
                 <Routes>
                     <Route exact path="/about" element={<About/>}/>
                     <Route exact path="/login" element={<Login/>}/>
                     <Route exact path="/register" element={<Register/>}/>
                     <Route exact path="/notes" element={<Notes/>}/>
-                    <Route exact path="/" element={<Quiz/>}/>
-                    <Route exact path="/quiz" element={<Quiz/>}/>
+
                     {/*forum*/}
                     <Route exact path="/forum" element={<Forum/>}/>
                     <Route exact path="/forum/:id" element={<SinglePost/>}/>
                     <Route exact path="/forum/create" element={<CreatePost/>}/>
+                    {/*quiz*/}
+                    <Route exact path="/" element={<Quiz/>}/>
+                    <Route exact path="/quiz" element={<Quiz/>}/>
                 </Routes>
             </Suspense>
         </div>

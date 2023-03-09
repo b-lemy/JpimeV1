@@ -3,11 +3,8 @@ import axios from "../api/axios";
 import {useNavigate} from "react-router-dom";
 
 const InitialState = {
-
 }
-
 export const AuthContext = createContext(InitialState);
-
 
 export const AuthProvider = ({children}) =>{
     const [email, setEmail] = useState("");
@@ -16,8 +13,6 @@ export const AuthProvider = ({children}) =>{
     // const [loginUser , setLoginUser] = useState("");
     const [authUser , setAuthUser] = useState("")
     const navigate = useNavigate()
-
-
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -47,7 +42,6 @@ export const AuthProvider = ({children}) =>{
             .catch((e)=>{
                 console.error(e)
             })
-
     },[])
 
     // useEffect(() =>{
@@ -56,7 +50,6 @@ export const AuthProvider = ({children}) =>{
     //     setLoginUser(user)
     //
     // },[])
-
 
     const authContext = {
         error,

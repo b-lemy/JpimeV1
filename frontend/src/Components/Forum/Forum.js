@@ -5,33 +5,29 @@ import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
 import Sidebar from "../Layout/Sidebar";
-// import {AuthContext} from "../../StoreContext/Auth-context";
+import {AuthContext} from "../../StoreContext/Auth-context";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
+    const {authUser} = useContext(AuthContext);
     const {deletePost} = useContext(PostContext);
-    // const {loginUser} = useContext(AuthContext);
     const [post, setPost] = useState([]);
-    // const [loggedIn, setLoggedIn] = useState(false);
-
-    // function handleLogin() {
-    //     if(loginUser.id === 1){
-    //         setLoggedIn(true);
-    //
-    //     }
-    // }
-
+    const [loggedIn, setLoggedIn] = useState(false);
 
 
     useEffect(() => {
-        const getPosts = async () => {
-            const apiPosts = await axios.get("posts");
-            setPost(apiPosts.data.data)
-        }
         getPosts();
-    }, [])
+        if(authUser.id === 7){
+            setLoggedIn(true)
+            console.log(authUser.id)
+        }
+    }, [authUser])
 
+    const getPosts = async () => {
+        const apiPosts = await axios.get("posts");
+        setPost(apiPosts.data.data)
+    }
 
     return (
         <Wrapper>
@@ -44,12 +40,14 @@ const Forum = () => {
                     </div>
                     {post.map(item => (
                         <div className="start_left" key={item.id}>
+
                             <Link to={`/forum/${item.id}`} style={{textDecoration: "none", color: "black"}}>
                                 <div style={{display: "flex", alignItems: "center"}}>
                                     <img alt="i" style={{
                                         borderRadius: '70%', marginRight: '10px', height: '40px',
                                         width: '40px'
                                     }} src={item.avatar}/>
+
 
                                     <div style={{display: "flex", flexDirection: "column", marginBottom: '2px'}}>
                                         <div style={{marginBottom: '2px', fontWeight: 'bolder'}}>
@@ -65,7 +63,11 @@ const Forum = () => {
                             </Link>
                             <div style={{display: "flex", justifyContent: "flex-end"}}>
 
-                                <button style={{marginRight: "12px"}}>Edit</button>
+                                {loggedIn ? <button style={{marginRight: "12px"}}>Edit</button> : "sio wewe"
+
+                                }
+
+
                                 <button onClick={() => deletePost(item.id)}>Delete</button>
 
                             </div>

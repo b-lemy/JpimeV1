@@ -25,9 +25,10 @@ Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);
 
 Route::middleware(['auth:api'])->group(function (){
+    Route::get('getAuthUser',[AuthController::class,'getAuthUser']);
     Route::apiResource('posts' ,PostsController::class);
     Route::apiResource('comments' ,CommentController::class);
-    Route::get('getAuthUser',[AuthController::class,'getAuthUser']);
+
 
 });
 

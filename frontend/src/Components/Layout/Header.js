@@ -43,7 +43,7 @@ const Header = () => {
                         (<Link to="/login" className="links-to">Login</Link>)
                     }
                 </div>
-                <div style={{display: "flex", alignItems: "center"}}>
+                <div style={{display: "flex", alignItems: "center",cursor:"pointer"}}>
                     <div style={{padding: '9px'}}>
                      <span style={{color: "white"}}>
                     <h6 style={{margin: '0'}}>Welcome :</h6>
