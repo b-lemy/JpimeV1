@@ -5,18 +5,21 @@ import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
 import Sidebar from "../Layout/Sidebar";
+import {AuthContext} from "../../StoreContext/Auth-context";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
     const {deletePost} = useContext(PostContext);
     const [post, setPost] = useState([]);
+    const {authUser} = useContext(AuthContext);
 
 
     useEffect(() => {
         const getPosts = async () => {
             const apiPosts = await axios.get("posts");
             setPost(apiPosts.data.data)
+            console.log(apiPosts.data.data)
         }
         getPosts();
     }, [])
@@ -53,12 +56,13 @@ const Forum = () => {
                                     {item.title}</h6>
                                 {item.body}...
                             </Link>
-                            {/*{loggedIn ?*/}
+                            {(item.authorName === authUser.first_name)
+                                ?
                                 <div style={{display: "flex", justifyContent: "flex-end"}}>
                                     <button style={{marginRight: "12px"}}>Edit</button>
                                     <button onClick={() => deletePost(item.id)}>Delete</button>
                                 </div>
-                                {/*: ''}*/}
+                                : ''}
                         </div>
 
                     ))}

@@ -11,7 +11,6 @@ use Illuminate\Support\Str;
 
 class CommentController extends Controller
 {
-
     public function index($id)
     {
         $comments = Post::with('comments', 'comments.CommentReply')->find($id);
@@ -24,7 +23,6 @@ class CommentController extends Controller
     {
 
         $comment = Comment::create([
-//            'user_id' => 2,
             'user_id' => Auth::user()->id,
             'body' => $request->input('body'),
             'post_id' => $post->id,
