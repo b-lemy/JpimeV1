@@ -2,16 +2,15 @@ import React, {createContext, useEffect, useState} from "react";
 import axios from "../api/axios";
 import {useNavigate} from "react-router-dom";
 
-const InitialState = {
-}
+const InitialState = {}
 export const AuthContext = createContext(InitialState);
 
-export const AuthProvider = ({children}) =>{
+export const AuthProvider = ({children}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     // const [loginUser , setLoginUser] = useState("");
-    const [authUser , setAuthUser] = useState("")
+    const [authUser, setAuthUser] = useState("")
     const navigate = useNavigate()
 
     const onSubmit = (e) => {
@@ -26,23 +25,24 @@ export const AuthProvider = ({children}) =>{
                 localStorage.setItem('token', accessToken);
                 // localStorage.setItem('AuthUser',  JSON.stringify(LoginUser));
                 navigate('/')
-                // window.location.reload(true)
+                window.location.reload(true)
             })
             .catch(error => {
                 // console.error(error.response.data.message)
                 setError(error.response.data)
             })
     }
-    useEffect(()=>{
+    useEffect(() => {
         axios.get('/getAuthUser')
-            .then((response)=>{
+            .then((response) => {
                 // console.log(response.data)
                 setAuthUser(response.data)
+
             })
-            .catch((e)=>{
+            .catch((e) => {
                 console.error(e)
             })
-    },[])
+    }, [])
 
     // useEffect(() =>{
     //     const User = localStorage.getItem('AuthUser')
@@ -57,13 +57,12 @@ export const AuthProvider = ({children}) =>{
         email,
         password,
         setPassword,
-        // loginUser,
         authUser,
         onSubmit
     }
-    return(
-       <AuthContext.Provider  value={authContext}>
-           {children}
-       </AuthContext.Provider>
+    return (
+        <AuthContext.Provider value={authContext}>
+            {children}
+        </AuthContext.Provider>
     )
 }

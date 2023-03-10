@@ -5,29 +5,21 @@ import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
 import {Link} from "react-router-dom";
 import Sidebar from "../Layout/Sidebar";
-import {AuthContext} from "../../StoreContext/Auth-context";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
 
 const Forum = () => {
-    const {authUser} = useContext(AuthContext);
     const {deletePost} = useContext(PostContext);
     const [post, setPost] = useState([]);
-    const [loggedIn, setLoggedIn] = useState(false);
 
 
     useEffect(() => {
-        getPosts();
-        if(authUser.id === 7){
-            setLoggedIn(true)
-            console.log(authUser.id)
+        const getPosts = async () => {
+            const apiPosts = await axios.get("posts");
+            setPost(apiPosts.data.data)
         }
-    }, [authUser])
-
-    const getPosts = async () => {
-        const apiPosts = await axios.get("posts");
-        setPost(apiPosts.data.data)
-    }
+        getPosts();
+    }, [])
 
     return (
         <Wrapper>
@@ -61,17 +53,12 @@ const Forum = () => {
                                     {item.title}</h6>
                                 {item.body}...
                             </Link>
-                            <div style={{display: "flex", justifyContent: "flex-end"}}>
-
-                                {loggedIn ? <button style={{marginRight: "12px"}}>Edit</button> : "sio wewe"
-
-                                }
-
-
-                                <button onClick={() => deletePost(item.id)}>Delete</button>
-
-                            </div>
-
+                            {/*{loggedIn ?*/}
+                                <div style={{display: "flex", justifyContent: "flex-end"}}>
+                                    <button style={{marginRight: "12px"}}>Edit</button>
+                                    <button onClick={() => deletePost(item.id)}>Delete</button>
+                                </div>
+                                {/*: ''}*/}
                         </div>
 
                     ))}

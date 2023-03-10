@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CommentController extends Controller
 {
 
-    public function index(Post $post)
+    public function index($id)
     {
+        $comments = Post::with('comments','comments.CommentReply')->find($id);
 //        $users = Post::find(1);
-//        return $users;
+        return $comments;
     }
 
 
@@ -21,25 +25,40 @@ class CommentController extends Controller
         //
     }
 
-
-    public function store(Request $request, Post $post)
+    public function store(Request $request,Post $post)
     {
-        $request->validate([
-            'body' => 'required'
+
+        $comment = Comment::create([
+//            'user_id' => 2,
+            'user_id' => Auth::user()->id,
+            'body' => $request->input('body'),
+            'post_id' => $post->id,
+            'parent_id' => null,
         ]);
 
-        return $post;
+        return $comment;
 
-//        $comment = new Comment();
-//        $comment->body = $request->input('body');
-//        $comment->post()->associate($post);
-//        $comment->save();
+    }
+
+    public function commentReply(Request $request,Post $post ,Comment $comment)
+    {
+
+        $commentReply = Comment::create([
+            'user_id' => 2,
+//            'user_id' => Auth::user()->id,
+            'body' => $request->input('body'),
+            'post_id' => $post->id,
+            'parent_id' => $comment->id,
+        ]);
+
+        return $commentReply;
+
     }
 
 
     public function show(Comment $comment)
     {
-        //
+//        comments.CommentReply
     }
 
 

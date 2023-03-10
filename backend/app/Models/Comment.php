@@ -12,6 +12,9 @@ class Comment extends Model
     protected $fillable = [
         'body',
         'thumbnail',
+        'user_id',
+        'post_id',
+        'parent_id'
     ];
 
 
@@ -24,7 +27,9 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function CommentReply(){
-        return $this->hasMany(Comment::class,'parent_id');
+
+    public function CommentReply()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }
