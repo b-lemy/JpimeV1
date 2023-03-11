@@ -11,39 +11,39 @@ use Illuminate\Support\Str;
 
 class CommentController extends Controller
 {
-    public function index($id)
-    {
-        $comments = Post::with('comments', 'comments.CommentReply')->find($id);
-//        $users = Post::find(1);
-        return $comments;
-    }
+//    public function index($id)
+//    {
+//        $comments = Post::with('comments', 'comments.CommentReply')->find($id);
+////        $users = Post::find(1);
+//        return $comments;
+//    }
 
 
     public function comment(Request $request, Post $post)
     {
 
-        $comment = Comment::create([
+         Comment::create([
             'user_id' => Auth::user()->id,
             'body' => $request->input('body'),
             'post_id' => $post->id,
             'parent_id' => null,
         ]);
 
-        return $comment;
+//        return $comment;
 
     }
 
     public function commentReply(Request $request, Post $post, Comment $comment)
     {
 
-        $commentReply = Comment::create([
+        Comment::create([
             'user_id' => Auth::user()->id,
             'body' => $request->input('body'),
             'post_id' => $post->id,
             'parent_id' => $comment->id,
         ]);
 
-        return $commentReply;
+//        return $commentReply;
 
     }
 

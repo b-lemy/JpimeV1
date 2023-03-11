@@ -19,7 +19,6 @@ const Forum = () => {
         const getPosts = async () => {
             const apiPosts = await axios.get("posts");
             setPost(apiPosts.data.data)
-            console.log(apiPosts.data.data)
         }
         getPosts();
     }, [])

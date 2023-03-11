@@ -12,16 +12,12 @@ use Illuminate\Support\Str;
 
 class PostsController extends Controller
 {
-
     public function index()
     {
 //        return Post::with("author")->get();
         $post = Post::with("author")->latest()->get();
         return PostResource::collection($post);
-
     }
-
-
     public function store(PostRequest $request)
     {
         $title = $request->input('title');
@@ -36,11 +32,7 @@ class PostsController extends Controller
         return response()->json([
             'message' => 'New post created'
         ]);
-
-
     }
-
-
     public function show($id)
     {
         $post = Post::with(['comments.CommentReply',
@@ -52,21 +44,16 @@ class PostsController extends Controller
         ])->find($id);
         return $post;
     }
-
-
     public function update(PostRequest $request, Post $post)
     {
         $post->update($request->all());
         return $post;
     }
-
-
     public function destroy(Post $post)
     {
         $post->delete();
         return response()->json([
             'message' => 'Post Deleted'
         ]);
-
     }
 }

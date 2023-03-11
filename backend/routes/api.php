@@ -20,17 +20,13 @@ Route::get('/trial',function (){
     return Hash::make('Mkombozi123');
 });
 
-
 Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);
-
-
-
 
 Route::middleware(['auth:api'])->group(function (){
     Route::get('getAuthUser',[AuthController::class,'getAuthUser']);
     Route::apiResource('posts' ,PostsController::class);
-    Route::get('/posts/{post}/comments', [CommentController::class, 'index']);
+//    Route::get('/posts/{post}/comments', [CommentController::class, 'index']);
     Route::post('/posts/{post}/comments', [CommentController::class, 'comment']);
     Route::post('/posts/{post}/comments/{comment}/comments', [CommentController::class, 'commentReply']);
 });
