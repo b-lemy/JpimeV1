@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Forum\Post;
+use App\Models\QuizModels\Quiz;
+use App\Models\QuizModels\Response;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -33,4 +36,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function post()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    public function quiz()
+    {
+        return $this->hasMany(Quiz::class);
+    }
+
+    public function response()
+    {
+        return $this->hasMany(Response::class);
+    }
 }

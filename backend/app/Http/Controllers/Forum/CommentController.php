@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Forum;
 
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
-use App\Models\Post;
+use App\Models\Forum\Comment;
+use App\Models\Forum\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
