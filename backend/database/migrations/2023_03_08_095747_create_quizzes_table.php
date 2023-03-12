@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
+
             $table->timestamps();
         });
     }

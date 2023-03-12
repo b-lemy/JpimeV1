@@ -9,6 +9,7 @@ export default function Sidebar() {
                 <button className="tags">Most Likes</button>
                 <button className="tags">Most Comments</button>
                 <button className="tags">Most Interaction</button>
+
             </div>
         </div>
     )

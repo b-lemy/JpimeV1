@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Authentication;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateInfoRequest;
 use App\Http\Requests\UpdatePassRequest;
 use App\Models\User;

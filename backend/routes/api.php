@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\Authentication\AuthController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\Forum\CommentController;
+use App\Http\Controllers\Forum\PostsController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +29,10 @@ Route::middleware(['auth:api'])->group(function (){
 //    Route::get('/posts/{post}/comments', [CommentController::class, 'index']);
     Route::post('/posts/{post}/comments', [CommentController::class, 'comment']);
     Route::post('/posts/{post}/comments/{comment}/comments', [CommentController::class, 'commentReply']);
+
+//    quiz
+
+
 });
 
 

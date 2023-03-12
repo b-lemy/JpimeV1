@@ -13,8 +13,8 @@ const ReplyPost = ({id}) => {
              {headers: {Authorization: `Bearer ${token}`}}
         )
             .then((response) => {
-                if (response.status === 201) {
-                    window.location.reload()
+                if (response.status === 200) {
+                    window.location.reload(true)
                 }
                 console.log(response)
             })

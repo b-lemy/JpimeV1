@@ -1,10 +1,7 @@
 import React, {useContext} from "react";
 import "./Auth.css"
 import AuthWrapper from "./AuthWrapper";
-
 import {AuthContext} from "../../StoreContext/Auth-context";
-// import axios from "../../api/axios";
-
 
 const Login = () => {
     const {error, setEmail, setPassword, onSubmit, email, password} = useContext(AuthContext)
@@ -13,7 +10,9 @@ const Login = () => {
             <div className="body">
                 <form className="container" onSubmit={onSubmit}>
                     <h5 className="title">Login.</h5>
-                    {error && <span style={{textAlign: "center", color: "red"}}>{error.message}</span>}
+                    {error &&
+                        <span style={{textAlign: "center", color: "red"}}>{error.message}</span>
+                    }
                     <label>EmailAddress</label>
                     <input
                         placeholder="Email"

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Forum;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostResource;
-use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -41,7 +40,7 @@ class PostsController extends Controller
             'comments.CommentReply.user',
             'comments.user',
             'author'
-        ])->find($id);
+        ])->latest()->find($id);
         return $post;
     }
     public function update(PostRequest $request, Post $post)

@@ -5,6 +5,7 @@ import axios from "axios";
 import ReplyPost from "./ReplyPost";
 import ReplyComment from "./ReplyComment";
 import {AuthContext} from "../../StoreContext/Auth-context";
+import Sidebar from "../Layout/Sidebar";
 
 const SinglePost = () => {
     const {id} = useParams()
@@ -12,12 +13,16 @@ const SinglePost = () => {
     const [SinglePost, setSinglePost] = useState([])
     const [PostReply, setPostReply] = useState(false)
     const [CommentReply, setCommentReply] = useState(false)
+    const [activeReply, setActiveReply] = useState(null)
+    const [activeComment, setActiveComment] = useState(null)
 
-    const setPostReplyHandler = () => {
+    const setPostReplyHandler = ({id}) => {
         setPostReply(prevState => !prevState)
+        setActiveReply(id)
     }
-    const setCommentReplyHandler = () => {
+    const setCommentReplyHandler = ({id}) => {
         setCommentReply(prevState => !prevState)
+        setActiveComment(id)
     }
 
     useEffect(() => {
@@ -48,8 +53,9 @@ const SinglePost = () => {
                                         <h6 style={{alignItems: "center", paddingTop: "10px"}}>{item.title}</h6>
                                     </div>
                                     {(item.user_id === authUser.id) ? '' :
-                                        PostReply ?
-                                            <button onClick={setPostReplyHandler} style={{
+                                        PostReply
+                                            ?
+                                            <button onClick={() => setPostReplyHandler({id: item.id})} style={{
                                                 textDecoration: 'none',
                                                 backgroundColor: 'inherit',
                                                 color: "whitesmoke",
@@ -57,7 +63,7 @@ const SinglePost = () => {
                                             }}> HideReply
                                             </button>
                                             :
-                                            <button onClick={setPostReplyHandler} style={{
+                                            <button onClick={() => setPostReplyHandler({id: item.id})} style={{
                                                 textDecoration: 'none',
                                                 backgroundColor: 'inherit',
                                                 color: "whitesmoke",
@@ -70,7 +76,7 @@ const SinglePost = () => {
                                 </div>
                                 {item.body}
                             </div>
-                            {PostReply ?
+                            {PostReply && activeReply === item.id ?
                                 <ReplyPost id={item.id}/>
                                 : ''
                             }
@@ -99,21 +105,23 @@ const SinglePost = () => {
                                             </div>
                                             <div>
                                                 {(comment.user_id === authUser.id) ? '' :
-                                                    CommentReply ?
-                                                        <button onClick={setCommentReplyHandler} style={{
-                                                            textDecoration: 'none',
-                                                            backgroundColor: 'inherit',
-                                                            color: "whitesmoke",
-                                                            cursor: "pointer"
-                                                        }}> HideReply
+                                                    CommentReply && activeComment === comment.id ?
+                                                        <button onClick={() => setCommentReplyHandler({id: comment.id})}
+                                                                style={{
+                                                                    textDecoration: 'none',
+                                                                    backgroundColor: 'inherit',
+                                                                    color: "whitesmoke",
+                                                                    cursor: "pointer"
+                                                                }}> HideReply
                                                         </button>
                                                         :
-                                                        <button onClick={setCommentReplyHandler} style={{
-                                                            textDecoration: 'none',
-                                                            backgroundColor: 'inherit',
-                                                            color: "whitesmoke",
-                                                            cursor: "pointer"
-                                                        }}> Reply
+                                                        <button onClick={() => setCommentReplyHandler({id: comment.id})}
+                                                                style={{
+                                                                    textDecoration: 'none',
+                                                                    backgroundColor: 'inherit',
+                                                                    color: "whitesmoke",
+                                                                    cursor: "pointer"
+                                                                }}> Reply
                                                         </button>
                                                 }
                                             </div>
@@ -122,7 +130,7 @@ const SinglePost = () => {
                                         </div>
                                         {comment.body}
                                     </div>
-                                    {CommentReply ?
+                                    {CommentReply && activeComment === comment.id ?
                                         <ReplyComment post={item.id} comment={comment.id}/>
                                         : ''
                                     }
@@ -179,16 +187,7 @@ const SinglePost = () => {
                 </div>
 
                 <div className=" col-lg-4 col-md-4 ">
-                    <div className="start_right">
-                        Tags
-                        <div className="tag">
-                            <button className="tags"> Most Recent</button>
-                            <button className="tags">Most Likes</button>
-                            <button className="tags">Most Comments</button>
-                            <button className="tags">Most Interaction</button>
-                        </div>
-
-                    </div>
+                    <Sidebar/>
                 </div>
 
             </section>
