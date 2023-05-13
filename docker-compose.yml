@@ -18,4 +18,4 @@ services:
       context: backend
       dockerfile:
     ports:
-      -
+      - "8000:8000"
