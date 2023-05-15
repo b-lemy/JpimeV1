@@ -46,3 +46,19 @@ th {
 td {
     text-align: center;
 }
+ /*Timed quiz*/
+.timed-quiz{
+    border : 1px solid red;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto
+}
+
+.quiz_question{
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.3;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
