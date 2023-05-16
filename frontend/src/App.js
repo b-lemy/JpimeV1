@@ -44,7 +44,7 @@ function App() {
                     {/*quiz*/}
                     <Route exact path="/" element={<Quiz/>}/>
                     <Route exact path="/quiz" element={<Quiz/>}/>
-                    <Route exact path="/quiz/Timed_quiz" element={<TimedQuiz/>}/>
+                    <Route exact path="/quiz/timed_quiz" element={<TimedQuiz/>}/>
                 </Routes>
             </Suspense>
         </div>

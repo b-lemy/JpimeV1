@@ -7,12 +7,14 @@ const TimedQuiz = () => {
         <Wrapper>
             <div className='timed-quiz'>
                 <div className='quiz_body'>
-                    <h2 className='quiz_question'> What is the capital city of Tanzania</h2>
-                    <ul>
-                        <li>1.Arusha</li>
-                        <li>2.Dodoma</li>
-                        <li>3.Dar es Salaam</li>
-                    </ul>
+                    <h2 className='quiz_question'> What is the capital city of Tanzania <br/>
+                    <span className="category">Geography</span></h2>
+                    <ol className="quiz-option">
+                        {/*<li className="selected">Arusha</li>*/}
+                        <li>Arusha</li>
+                        <li>Dodoma</li>
+                        <li>Dar es Salaam</li>
+                    </ol>
                 </div>
             </div>
         </Wrapper>

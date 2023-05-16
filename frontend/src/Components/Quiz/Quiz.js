@@ -9,7 +9,7 @@ const Quiz = () => {
         <Wrapper>
             <div className="QuizButtons">
                 <Link to='' className="Btns">Head to Head</Link>
-                <Link to='Timed_quiz' className="Btns">Timed Quiz</Link>
+                <Link to='timed_quiz' className="Btns">Timed Quiz</Link>
                 <Link to='' className="Btns">Survival Quiz</Link>
             </div>
 
