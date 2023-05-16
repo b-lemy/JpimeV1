@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
+import QuizApi from "./QuizApi";
+import quizApi from "./QuizApi";
 
 const TimedQuiz = () => {
+
+    useEffect(() => {
+        const getQuiz = async () => {
+            const apiPosts = await QuizApi.get("");
+            console.log(apiPosts.data.results)
+        }
+        getQuiz();
+    }, [])
     return (
         <Wrapper>
             <div className='timed-quiz'>
