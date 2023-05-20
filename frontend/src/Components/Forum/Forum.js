@@ -12,13 +12,16 @@ import {AuthContext} from "../../StoreContext/Auth-context";
 const Forum = () => {
     const {deletePost} = useContext(PostContext);
     const [post, setPost] = useState([]);
+    const [isLoading, setisLoading] = useState(true)
     const {authUser} = useContext(AuthContext);
 
 
     useEffect(() => {
+        setisLoading(true)
         const getPosts = async () => {
             const apiPosts = await axios.get("posts");
-            setPost(apiPosts.data.data)
+            // setPost(apiPosts.data.data)
+            // setisLoading(false)
             // console.log(apiPosts.data.data)
         }
         getPosts();
@@ -33,41 +36,45 @@ const Forum = () => {
                             New Post
                         </Link>
                     </div>
-                    {post.map(item => (
-                        <div className="start_left" key={item.id}>
+                    {isLoading
+                        ? <div style={{display:"flex",alignItems:"center",justifyContent:"center", height:"70vh" }}> Loading ...</div>
+                        : <div>  {post.map(item => (
+                            <div className="start_left" key={item.id}>
 
-                            <Link to={`/forum/${item.id}`} style={{textDecoration: "none", color: "black"}}>
-                                <div style={{display: "flex", alignItems: "center"}}>
-                                    <img alt="i" style={{
-                                        borderRadius: '70%', marginRight: '10px', height: '40px',
-                                        width: '40px'
-                                    }} src={item.avatar}/>
+                                <Link to={`/forum/${item.id}`} style={{textDecoration: "none", color: "black"}}>
+                                    <div style={{display: "flex", alignItems: "center"}}>
+                                        <img alt="i" style={{
+                                            borderRadius: '70%', marginRight: '10px', height: '40px',
+                                            width: '40px'
+                                        }} src={item.avatar}/>
 
 
-                                    <div style={{display: "flex", flexDirection: "column", marginBottom: '2px'}}>
-                                        <div style={{marginBottom: '2px', fontWeight: 'bolder'}}>
-                                            {item.authorName}</div>
-                                        <p style={{marginBottom: '2px'}}>{item.created}</p>
-                                        <p style={{marginBottom: '2px'}}>{item.authorPhone}</p>
+                                        <div style={{display: "flex", flexDirection: "column", marginBottom: '2px'}}>
+                                            <div style={{marginBottom: '2px', fontWeight: 'bolder'}}>
+                                                {item.authorName}</div>
+                                            <p style={{marginBottom: '2px'}}>{item.created}</p>
+                                            <p style={{marginBottom: '2px'}}>{item.authorPhone}</p>
+                                        </div>
+
                                     </div>
+                                    <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
+                                        {item.title}</h6>
+                                    {item.body}...
+                                </Link>
+                                {(item.authorName === authUser.first_name)
+                                    ?
+                                    <div style={{display: "flex", justifyContent: "flex-end"}}>
+                                        <button style={{marginRight: "12px"}}>Edit</button>
+                                        <button onClick={() => deletePost(item.id)}>Delete</button>
+                                    </div>
+                                    : ''}
+                            </div>
 
-                                </div>
-                                <h6 style={{justifyContent: "center", display: "flex", fontStyle: "italic"}}>
-                                    {item.title}</h6>
-                                {item.body}...
-                            </Link>
-                            {(item.authorName === authUser.first_name)
-                                ?
-                                <div style={{display: "flex", justifyContent: "flex-end"}}>
-                                    <button style={{marginRight: "12px"}}>Edit</button>
-                                    <button onClick={() => deletePost(item.id)}>Delete</button>
-                                </div>
-                                : ''}
+                        ))}
                         </div>
-
-                    ))}
-
+                    }
                 </div>
+
                 <div className=" col-lg-4 col-md-4 ">
                     <Sidebar/>
                 </div>
