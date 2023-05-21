@@ -9,6 +9,7 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import {ForumProvider} from "./StoreContext/Forum-context";
 import {AuthProvider} from "./StoreContext/Auth-context";
+import {QuizProvider} from "./StoreContext/Quiz-context";
 // import {store} from "./StoreRedux/AuthRedux";
 // import {Provider} from "react-redux";
 
@@ -20,9 +21,11 @@ root.render(
 
         <BrowserRouter>
             <AuthProvider>
-            <ForumProvider>
-                <App/>
-            </ForumProvider>
+                <QuizProvider>
+                    <ForumProvider>
+                        <App/>
+                    </ForumProvider>
+                </QuizProvider>
             </AuthProvider>
         </BrowserRouter>
         // {/*</Provider>*/}

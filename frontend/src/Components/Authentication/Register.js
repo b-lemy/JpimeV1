@@ -57,8 +57,8 @@ const Register = () => {
                         onChange={(e) => setLast(e.target.value)}
                     />
                     {error.last_name &&  <span style={{textAlign: "center", color: "red"}}>{error.last_name} </span> }
-                    <label>EmailAddress</label>
-                    <input
+                    <label htmlFor="email">EmailAddress</label>
+                    <input id="email"
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}

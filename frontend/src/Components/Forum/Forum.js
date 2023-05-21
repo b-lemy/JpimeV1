@@ -20,9 +20,9 @@ const Forum = () => {
         setisLoading(true)
         const getPosts = async () => {
             const apiPosts = await axios.get("posts");
-            // setPost(apiPosts.data.data)
-            // setisLoading(false)
-            // console.log(apiPosts.data.data)
+            setPost(apiPosts.data.data)
+            setisLoading(false)
+            console.log(apiPosts.data.data)
         }
         getPosts();
     }, [])

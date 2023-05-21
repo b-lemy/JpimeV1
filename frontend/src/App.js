@@ -11,6 +11,7 @@ import Notes from "./Components/Notes/Notes";
 import SinglePost from "./Components/Forum/SinglePost";
 import CreatePost from "./Components/Forum/CreatePost";
 import TimedQuiz from "./Components/Quiz/TimedQuiz";
+import CategoryQuiz from "./Components/Quiz/CategoryQuiz";
 //Lazy Loading implementation
 // const Login = lazy(() => import("./Components/Authentication/Login"))
 
@@ -44,7 +45,8 @@ function App() {
                     {/*quiz*/}
                     <Route exact path="/" element={<Quiz/>}/>
                     <Route exact path="/quiz" element={<Quiz/>}/>
-                    <Route exact path="/quiz/timed_quiz" element={<TimedQuiz/>}/>
+                    <Route exact path="/quiz/category" element={<CategoryQuiz/>}/>
+                    {/*<Route exact path="/quiz/timed_quiz" element={<TimedQuiz/>}/>*/}
                 </Routes>
             </Suspense>
         </div>

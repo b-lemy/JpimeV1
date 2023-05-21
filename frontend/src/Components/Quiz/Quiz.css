@@ -120,4 +120,39 @@ td {
     
 }
 
+/*category place*/
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    /*border: 1px solid red;*/
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.select{
+    display:flex;
+    flex-direction:column;
+}
+.mySelect{
+    margin-bottom: 10px;
+    width: 500px; /* Adjust the width as needed */
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    outline: none;
+    border: none;
+}
+
+.label{
+    margin-bottom: 7px;
+}
+
+
+/*modal Form for categories*/
+
+
 
