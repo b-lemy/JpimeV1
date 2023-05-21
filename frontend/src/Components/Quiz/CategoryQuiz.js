@@ -1,27 +1,30 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
+import {useNavigate} from 'react-router-dom';
 import QuizApi from "./QuizApi";
-import {QContext} from "../../StoreContext/Quiz-context";
-import axios from "axios";
+// import {QContext} from "../../StoreContext/Quiz-context";
+// import axios from "axios";
 
 const Category = () => {
-    const {InitialState} = useContext(QContext);
+    const navigate = useNavigate();
+    // const {InitialState} = useContext(QContext);
     const [category, setCategory] = useState([])
     const [isLoading, setisLoading] = useState(true)
-    // const [amount , setAmount] = useState(0)
-    // const [amount , setAmount] = useState(0)
-    const [amount , setAmount] = useState(0)
-    console.log(amount)
+    const [selectedCategory, setSelectedCategory] = useState("")
+    const [selectedDifficulty, setSelectedDifficulty] = useState("")
+    const [selectedType, setSelectedType] = useState("")
+    const [amount, setAmount] = useState(0)
+
 
     const dificultyOptions = [
-        {id:"easy" ,name:"Easy"},
-        {id:"medium" ,name:"Medium"},
-        {id:"hard" ,name:"Hard"}
+        {id: "easy", name: "Easy"},
+        {id: "medium", name: "Medium"},
+        {id: "hard", name: "Hard"}
     ]
 
     const typeOptions = [
-        {id:"multiple" ,name:"Multiple Choice"},
+        {id: "multiple", name: "Multiple Choice"},
         {id:"boolean" ,name:"True/False"},
 
     ]
@@ -30,25 +33,26 @@ const Category = () => {
         setisLoading(true)
         const getQuizCategory = async () => {
             const apiQuizCategory = await QuizApi.get("/api_category.php");
-            console.log(apiQuizCategory.data.trivia_categories)
+            // console.log(apiQuizCategory.data.trivia_categories)
             setCategory(apiQuizCategory.data.trivia_categories)
             setisLoading(false)
-
-
         }
         getQuizCategory();
     }, [])
-
     const onSubmit = (e) => {
         e.preventDefault()
         if (amount <= 0 || isNaN(amount)) {
             alert("Please enter a number greater than 0.");
         } else {
-            // Value is valid, do something with it
-            console.log("Valid number input:", amount);
+            const myData = [
+                amount,
+                selectedCategory,
+                selectedDifficulty,
+                selectedType,
+
+            ]
+            navigate('/quiz/timed_quiz', {state: {myData}});
         }
-
-
     }
 
 
@@ -62,7 +66,8 @@ const Category = () => {
                     <form  onSubmit={onSubmit} className="form">
                         <div className="select">
                             <label className="label" htmlFor="category">Select an Category</label>
-                            <select id="category" className="mySelect">
+                            <select value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}
+                                    id="category" className="mySelect">
                                 <option value="">--select--</option>
                                 {category.map(cat => (
                                     <option key={cat.id} value={cat.id}>{cat.name}</option>
@@ -71,9 +76,10 @@ const Category = () => {
                         </div>
                         <div className="select">
                             <label className="label" htmlFor="difficulty">Select an Difficulty</label>
-                            <select id="difficulty" className="mySelect">
+                            <select value={selectedDifficulty} onChange={(e) => setSelectedDifficulty(e.target.value)}
+                                    id="difficulty" className="mySelect">
                                 <option value="">--select--</option>
-                                { dificultyOptions.map(diff => (
+                                {dificultyOptions.map(diff => (
 
                                     <option key={diff.id} value={diff.id}>{diff.name}</option>
                                 ))
@@ -83,9 +89,10 @@ const Category = () => {
                         </div>
                         <div className="select">
                             <label className="label" htmlFor="type">Select an Type</label>
-                            <select id="type" className="mySelect">
+                            <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)} id="type"
+                                    className="mySelect">
                                 <option value="">--select--</option>
-                                { typeOptions.map(type => (
+                                {typeOptions.map(type => (
                                     <option key={type.id} value={type.id}>{type.name}</option>
                                 ))
                                 }

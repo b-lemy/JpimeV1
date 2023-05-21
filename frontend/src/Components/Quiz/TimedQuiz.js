@@ -1,24 +1,43 @@
 import React, {useEffect, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
-import QuizApi from "./QuizApi";
+import axios from "axios";
+import {useLocation} from 'react-router-dom';
 
 const TimedQuiz = () => {
+    const location = useLocation();
+    const myData = location.state?.myData;
     const [quiz, setquiz] = useState([])
     const [isLoading, setisLoading] = useState(true)
+    console.log(myData)
+
 
     useEffect(() => {
 
         setisLoading(true);
         const getQuiz = async () => {
-            const apiPosts = await QuizApi.get("api.php?amount=1");
-            console.log(apiPosts.data.results)
-            setquiz(apiPosts.data.results)
+            let apiPosts = `https://opentdb.com/api.php?amount=${myData[0]}`;
+
+            if (myData[1]) {
+                apiPosts = apiPosts.concat(`&category=${myData[1]}`);
+
+            }
+            if (myData[2]) {
+                apiPosts = apiPosts.concat(`&difficulty=${myData[2]}`);
+            }
+            if (myData[3]) {
+                apiPosts = apiPosts.concat(`&type=${myData[3]}`);
+                console.log(apiPosts)
+
+            }
+            const apiQuiz = await axios.get(apiPosts);
+            console.log(apiQuiz.data)
+            setquiz(apiQuiz.data.results)
             setisLoading(false)
 
         }
         getQuiz();
-    }, [])
+    }, [myData])
     return (
         <Wrapper>
 

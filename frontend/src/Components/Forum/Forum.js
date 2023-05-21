@@ -22,7 +22,7 @@ const Forum = () => {
             const apiPosts = await axios.get("posts");
             setPost(apiPosts.data.data)
             setisLoading(false)
-            console.log(apiPosts.data.data)
+            // console.log(apiPosts.data.data)
         }
         getPosts();
     }, [])
