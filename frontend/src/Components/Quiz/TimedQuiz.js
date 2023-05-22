@@ -9,7 +9,7 @@ const TimedQuiz = () => {
     const myData = location.state?.myData;
     const [quiz, setquiz] = useState([])
     const [isLoading, setisLoading] = useState(true)
-    console.log(myData)
+    // console.log(myData)
 
 
     useEffect(() => {
@@ -27,11 +27,11 @@ const TimedQuiz = () => {
             }
             if (myData[3]) {
                 apiPosts = apiPosts.concat(`&type=${myData[3]}`);
-                console.log(apiPosts)
+                // console.log(apiPosts)
 
             }
             const apiQuiz = await axios.get(apiPosts);
-            console.log(apiQuiz.data)
+            // console.log(apiQuiz.data)
             setquiz(apiQuiz.data.results)
             setisLoading(false)
 
