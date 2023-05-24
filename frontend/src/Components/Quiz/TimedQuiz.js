@@ -8,11 +8,38 @@ const TimedQuiz = () => {
     const location = useLocation();
     const myData = location.state?.myData;
     const [quiz, setquiz] = useState([])
-    const [isLoading, setisLoading] = useState(true)
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+    const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
+    const [score, setScore] = useState(0);
+    const [isLoading, setIsLoading] = useState(true)
     console.log(myData)
 
+
+    const correctAnswerHandler = (index) => {
+
+    }
+
+    const handleAnswerClick = (item ,answer) => {
+        // setSelectedAnswerIndex(2)
+        console.log(selectedAnswerIndex)
+         if (item.correct_answer === answer) {
+        setScore(score + 1);
+        }
+        // Move to the next question
+        // nextQuestion();
+    };
+
+    // const nextQuestion = () => {
+    //     if (currentQuestionIndex < questions.length - 1) {
+    //         setCurrentQuestionIndex(currentQuestionIndex + 1);
+    //     } else {
+    //         console.log('No more questions');
+    //         console.log('Final Score:', score);
+    //     }
+    // };
+
     useEffect(() => {
-        setisLoading(true);
+        setIsLoading(true);
         const getQuiz = async () => {
             let apiPosts = `https://opentdb.com/api.php?amount=${myData[0]}`;
 
@@ -28,9 +55,9 @@ const TimedQuiz = () => {
                 console.log(apiPosts)
             }
             const apiQuiz = await axios.get(apiPosts);
-            console.log(apiQuiz.data)
+            console.log(apiQuiz.data.results[0])
             setquiz(apiQuiz.data.results)
-            setisLoading(false)
+            setIsLoading(false)
         }
         getQuiz();
     }, [myData])
@@ -45,20 +72,26 @@ const TimedQuiz = () => {
                     : <div>
                         {quiz.map((item, index) => (
                             <div key={index} className='quiz_body'>
-                                <h2 className='quiz_question'> {item.question.replace(/&quot;/g, '').replace(/&#039;/g, "'")}<br/>
-                                    <span className="category">{item.category}</span></h2>
+                                <h1 className="title">Question {index + 1}</h1>
+                                <h2 className='quiz_question'> {item.question[0].replace(/&quot;/g, '').replace(/&#039;/g, "'")}<br/>
+                                    <span className="category">{item?.category}</span></h2>
                                 <ol className="quiz-option">
                                     {/*<li className="selected">Arusha</li>*/}
 
                                     {item.incorrect_answers
                                         .concat(item.correct_answer)
                                         .sort(() => Math.random() - 0.5)
-                                        .map((answers, index) => (
-                                            <li key={index}>{answers}</li>
+                                        .map((answer, index) => (
+                                            <li
+                                                onClick={() => handleAnswerClick(item ,answer)}
+                                                key={index}
+                                                // className={index === selectedAnswerIndex ? 'selected' : ''}
+                                            >{answer}</li>
                                         ))}
                                     {item.correct_answer}
 
                                 </ol>
+                                <h1 className="title">Score ( {score} / {myData[0]})</h1>
                             </div>
                         ))
                         }
