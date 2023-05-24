@@ -24,7 +24,7 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::User();
             $AToken = $user->createToken('token')->accessToken;
-//            $expiresAt = now()->addDays(7); // set expiration time to 7 days from now
+//            $expiresAt = now()->addDays(1); // set expiration time to 7 days from now
 //            $token = $request->user()->token();
 //            $token->expires_at = $expiresAt;
 //            $token->save();

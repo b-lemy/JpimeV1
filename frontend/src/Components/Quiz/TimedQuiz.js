@@ -9,11 +9,9 @@ const TimedQuiz = () => {
     const myData = location.state?.myData;
     const [quiz, setquiz] = useState([])
     const [isLoading, setisLoading] = useState(true)
-    // console.log(myData)
-
+    console.log(myData)
 
     useEffect(() => {
-
         setisLoading(true);
         const getQuiz = async () => {
             let apiPosts = `https://opentdb.com/api.php?amount=${myData[0]}`;
@@ -27,24 +25,23 @@ const TimedQuiz = () => {
             }
             if (myData[3]) {
                 apiPosts = apiPosts.concat(`&type=${myData[3]}`);
-                // console.log(apiPosts)
-
+                console.log(apiPosts)
             }
             const apiQuiz = await axios.get(apiPosts);
-            // console.log(apiQuiz.data)
+            console.log(apiQuiz.data)
             setquiz(apiQuiz.data.results)
             setisLoading(false)
-
         }
         getQuiz();
     }, [myData])
     return (
         <Wrapper>
-
             <div className='timed-quiz'>
-
                 {isLoading
-                    ? <div style={{display:"flex",alignItems:"center",justifyContent:"center", height:"70vh" }}> Loading ...</div>
+                    ? <div style={{display:"flex",alignItems:"center",justifyContent:"center", height:"70vh" }}>
+                        <div className="spinner-grow text-success" role="status">
+                        </div>
+                </div>
                     : <div>
                         {quiz.map((item, index) => (
                             <div key={index} className='quiz_body'>

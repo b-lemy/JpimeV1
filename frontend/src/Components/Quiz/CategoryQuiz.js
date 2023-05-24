@@ -60,7 +60,8 @@ const Category = () => {
         <Wrapper>
             {isLoading
                 ? <div className="timed-quiz">
-                    loading ...
+                    <div className="spinner-grow" role="status">
+                    </div>
                 </div>
                 : <div>
                     <form  onSubmit={onSubmit} className="form">

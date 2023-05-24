@@ -37,7 +37,11 @@ const Forum = () => {
                         </Link>
                     </div>
                     {isLoading
-                        ? <div style={{display:"flex",alignItems:"center",justifyContent:"center", height:"70vh" }}> Loading ...</div>
+                        ?
+                        <div style={{display: "flex", alignItems: "center", justifyContent: "center", height: "70vh"}}>
+                            <div className="spinner-grow" role="status">
+                            </div>
+                        </div>
                         : <div>  {post.map(item => (
                             <div className="start_left" key={item.id}>
 
