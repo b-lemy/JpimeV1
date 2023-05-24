@@ -3,6 +3,7 @@ import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 import axios from "axios";
 import {useLocation} from 'react-router-dom';
+import {decode} from "html-entities";
 
 const TimedQuiz = () => {
     const location = useLocation();
@@ -19,24 +20,34 @@ const TimedQuiz = () => {
 
     }
 
-    const handleAnswerClick = (item ,answer) => {
+    // const handleAnswerClick = (item ,answer) => {
+    //     // setSelectedAnswerIndex(2)
+    //     console.log(selectedAnswerIndex)
+    //      if (item.correct_answer === answer) {
+    //     setScore(score + 1);
+    //     }
+    //     // Move to the next question
+    //     nextQuestion();
+    // };
+
+    const handleAnswerClick = () => {
         // setSelectedAnswerIndex(2)
         console.log(selectedAnswerIndex)
-         if (item.correct_answer === answer) {
-        setScore(score + 1);
+        if (true) {
+            setScore(score + 1);
         }
         // Move to the next question
-        // nextQuestion();
+        nextQuestion();
     };
 
-    // const nextQuestion = () => {
-    //     if (currentQuestionIndex < questions.length - 1) {
-    //         setCurrentQuestionIndex(currentQuestionIndex + 1);
-    //     } else {
-    //         console.log('No more questions');
-    //         console.log('Final Score:', score);
-    //     }
-    // };
+    const nextQuestion = () => {
+        if (currentQuestionIndex < quiz.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+            console.log('No more questions');
+            console.log('Final Score:', score);
+        }
+    };
 
     useEffect(() => {
         setIsLoading(true);
@@ -55,7 +66,7 @@ const TimedQuiz = () => {
                 console.log(apiPosts)
             }
             const apiQuiz = await axios.get(apiPosts);
-            console.log(apiQuiz.data.results[0])
+            console.log(apiQuiz.data.results)
             setquiz(apiQuiz.data.results)
             setIsLoading(false)
         }
@@ -65,37 +76,67 @@ const TimedQuiz = () => {
         <Wrapper>
             <div className='timed-quiz'>
                 {isLoading
-                    ? <div style={{display:"flex",alignItems:"center",justifyContent:"center", height:"70vh" }}>
+                    ? <div style={{display: "flex", alignItems: "center", justifyContent: "center", height: "70vh"}}>
                         <div className="spinner-grow text-success" role="status">
                         </div>
-                </div>
-                    : <div>
-                        {quiz.map((item, index) => (
-                            <div key={index} className='quiz_body'>
-                                <h1 className="title">Question {index + 1}</h1>
-                                <h2 className='quiz_question'> {item.question[0].replace(/&quot;/g, '').replace(/&#039;/g, "'")}<br/>
-                                    <span className="category">{item?.category}</span></h2>
-                                <ol className="quiz-option">
-                                    {/*<li className="selected">Arusha</li>*/}
-
-                                    {item.incorrect_answers
-                                        .concat(item.correct_answer)
-                                        .sort(() => Math.random() - 0.5)
-                                        .map((answer, index) => (
-                                            <li
-                                                onClick={() => handleAnswerClick(item ,answer)}
-                                                key={index}
-                                                // className={index === selectedAnswerIndex ? 'selected' : ''}
-                                            >{answer}</li>
-                                        ))}
-                                    {item.correct_answer}
-
-                                </ol>
-                                <h1 className="title">Score ( {score} / {myData[0]})</h1>
-                            </div>
-                        ))
-                        }
                     </div>
+                    :
+
+                    <div className='quiz_body'>
+                        <h1 className="title">Question {currentQuestionIndex + 1}</h1>
+                        <h2 className='quiz_question'> {decode(quiz[currentQuestionIndex].question)}<br/>
+                            <span className="category">{decode(quiz[currentQuestionIndex].category)}</span>
+                        </h2>
+
+                        <ol className="quiz-option">
+                            {quiz[currentQuestionIndex].incorrect_answers
+                                .concat(quiz[currentQuestionIndex].correct_answer)
+                                .sort(() => Math.random() - 0.5)
+                                .map((answer, index) => (
+                                    <li
+                                        // onClick={() => handleAnswerClick(item, answer)}
+                                        key={index}
+                                        // className={index === selectedAnswerIndex ? 'selected' : ''}
+                                    >{decode(answer)}</li>
+                                ))}
+                            {quiz[currentQuestionIndex].correct_answer}
+                            {/*<button onClick={handleAnswerClick}> done</button>*/}
+
+                        </ol>
+                        <h1 className="title">Score ( {score} / {quiz.length})</h1>
+
+
+                    </div>
+
+
+
+                    // <div>
+                    //     {quiz.map((item, index) => (
+                    //         <div key={index} className='quiz_body'>
+                    //             <h1 className="title">Question {index + 1}</h1>
+                    //             <h2 className='quiz_question'> {decode(item.question)}<br/>
+                    //                 <span className="category">{item?.category}</span></h2>
+                    //             <ol className="quiz-option">
+                    //                 {/*<li className="selected">Arusha</li>*/}
+                    //
+                    //                 {item.incorrect_answers
+                    //                     .concat(item.correct_answer)
+                    //                     .sort(() => Math.random() - 0.5)
+                    //                     .map((answer, index) => (
+                    //                         <li
+                    //                             onClick={() => handleAnswerClick(item ,answer)}
+                    //                             key={index}
+                    //                             // className={index === selectedAnswerIndex ? 'selected' : ''}
+                    //                         >{decode(answer)}</li>
+                    //                     ))}
+                    //                 {item.correct_answer}
+                    //
+                    //             </ol>
+                    //             <h1 className="title">Score ( {score} / {quiz.length})</h1>
+                    //         </div>
+                    //     ))
+                    //     }
+                    // </div>
                 }
             </div>
 
