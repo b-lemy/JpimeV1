@@ -9,7 +9,10 @@ const FinalScore = () => {
     // console.log(finaScore)
     return (
         <Wrapper>
-            <div> {finaScore}</div>
+            <div className="finalScoreDiv">
+            <h3>Final Score</h3>
+            <span className="finalScore">{finaScore} </span>
+            </div>
         </Wrapper>
     );
 }

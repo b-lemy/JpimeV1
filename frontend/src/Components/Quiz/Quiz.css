@@ -156,6 +156,25 @@ td {
     color: #7791a1;
 }
 
+
+.finalScoreDiv{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem auto;
+    font-weight:bold;
+    font-size:25px;
+}
+
+.finalScore{
+    /*background-color: #5375e2;*/
+    padding: 20px;
+    margin-top: 30px;
+    border: 1px solid #7791a1;
+    border-radius: 7px;
+}
+
 /*modal Form for categories*/
 
 

@@ -37,8 +37,8 @@ const TimedQuiz = () => {
         if (currentQuestionIndex < quiz.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
-            console.log('No more questions');
-            console.log('Final Score:', score);
+            // console.log('No more questions');
+            // console.log('Final Score:', score);
             navigate('/quiz/timed_quiz/finalScore' ,{state:{score}})
 
         }
