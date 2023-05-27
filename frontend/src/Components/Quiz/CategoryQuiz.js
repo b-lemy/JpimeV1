@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 import {useNavigate} from 'react-router-dom';
-import QuizApi from "./QuizApi";
+import QuizApi from "../../api/QuizApi";
 // import {QContext} from "../../StoreContext/Quiz-context";
 // import axios from "axios";
 

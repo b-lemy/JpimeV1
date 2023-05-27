@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState} from "react";
-import axios from "../api/axios";
+import axios from "../api/LaravelApi";
 import {useNavigate} from "react-router-dom";
 
 const InitialState = {}

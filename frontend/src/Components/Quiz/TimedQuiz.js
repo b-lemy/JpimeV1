@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
-import axios from "axios";
+// import axios from "axios";
 import {useLocation,useNavigate} from 'react-router-dom';
 import {decode} from "html-entities";
+import quizApi from "../../api/QuizApi";
+import LaravelApi from "../../api/LaravelApi";
 
 const TimedQuiz = () => {
     const navigate = useNavigate();
@@ -60,10 +62,14 @@ const TimedQuiz = () => {
                 apiPosts = apiPosts.concat(`&type=${myData[3]}`);
                 console.log(apiPosts)
             }
-            const apiQuiz = await axios.get(apiPosts);
+            const apiQuiz = await quizApi.get(apiPosts);
             // console.log(apiQuiz.data.results)
-            setQuiz(apiQuiz.data.results)
+            setQuiz(apiQuiz.data.results);
+            const dataToBackend = apiQuiz.data.results
             setIsLoading(false)
+            const response = await LaravelApi.post('/insert-data', {dataToBackend});
+            console.log(response)
+
         }
         getQuiz();
     }, [myData])

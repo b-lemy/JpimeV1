@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from "react";
-import axios from "../../api/axios"
+import LaravelApi from "../../api/LaravelApi"
 import Wrapper from "../Layout/Wrapper";
 import {PostContext} from "../../StoreContext/Forum-context";
 import './Forum.css'
@@ -19,7 +19,7 @@ const Forum = () => {
     useEffect(() => {
         setisLoading(true)
         const getPosts = async () => {
-            const apiPosts = await axios.get("posts");
+            const apiPosts = await LaravelApi.get("posts");
             setPost(apiPosts.data.data)
             setisLoading(false)
             // console.log(apiPosts.data.data)

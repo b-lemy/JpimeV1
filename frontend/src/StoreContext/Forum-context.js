@@ -1,7 +1,7 @@
 // step 1
 import React, {createContext, useReducer, useState} from "react";
 // import axios from "axios";
-import axios from "../api/axios"
+import axios from "../api/LaravelApi"
 import {useNavigate} from "react-router-dom";
 // axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 

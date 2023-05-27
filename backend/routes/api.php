@@ -31,6 +31,8 @@ Route::middleware(['auth:api'])->group(function (){
     Route::post('/posts/{post}/comments/{comment}/comments', [CommentController::class, 'commentReply']);
 
 //    quiz
+    Route::post('/insert-data', [\App\Http\Controllers\Quiz\QuestionController::class,'insertData']);
+
 
 
 });
