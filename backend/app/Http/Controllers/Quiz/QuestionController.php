@@ -14,15 +14,17 @@ class QuestionController extends Controller
 //        $loggedIn = auth()->user();
         $responseData = $request->input('dataToBackend');
 
-        Log::channel('process')->info($responseData );
-        foreach ($responseData as $item) {
-            Log::channel('process')->info($item );
+        $arrayLength = count($responseData);
 
+
+        Log::channel('process')->info($responseData , (array)$arrayLength);
+        foreach ($responseData as $item) {
             $question = new Question();
             $question->category = $item['category']; // Assign the values from the array to the model's properties
             $question->type = $item['type'];
             $question->difficulty = $item['difficulty'];
-            $question->amount = '5';
+            $question->amount = $arrayLength;
+            $question->question = $item['question'];
             $question->quiz_id = '1';
             $question->save(); // Save the model to the database
         }
