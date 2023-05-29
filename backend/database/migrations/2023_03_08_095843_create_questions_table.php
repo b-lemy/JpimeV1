@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('category');
             $table->text('difficulty');
             $table->float('amount');
-            $table->enum('type', ['single_choice', 'multiple_choice', 'text']);
+            $table->enum('type', ['multiple', 'boolean']);
             $table->foreignId('quiz_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

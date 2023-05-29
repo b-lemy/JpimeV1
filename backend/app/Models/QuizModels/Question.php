@@ -9,6 +9,14 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'category',
+        'type',
+        'difficulty',
+        'amount',
+        'quiz_id'
+    ];
+
     public function quiz()
     {
         return $this->belongsToMany(Quiz::class);

@@ -18,12 +18,12 @@ import FinalScore from "./Components/Quiz/FinalScore";
 
 function App() {
     const navigate = useNavigate();
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            navigate('/login');
-        }
-    }, [navigate]);
+    // useEffect(() => {
+    //     const token = localStorage.getItem('token');
+    //     if (!token) {
+    //         navigate('/login');
+    //     }
+    // }, [navigate]);
     return (
         <div className="App">
             <Suspense fallback={

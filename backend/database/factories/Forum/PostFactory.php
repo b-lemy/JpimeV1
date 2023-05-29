@@ -1,7 +1,8 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Forum;
 
+use App\Models\Forum\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -12,9 +13,12 @@ class PostFactory extends Factory
 {
     /**
      * Define the model's default state.
+
      *
      * @return array<string, mixed>
      */
+
+    protected $model = Post::class;
     public function definition()
     {
         $title = fake()->unique()->realText(10);

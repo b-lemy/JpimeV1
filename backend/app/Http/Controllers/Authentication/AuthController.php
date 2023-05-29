@@ -12,6 +12,7 @@ use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,7 @@ class AuthController extends Controller
 //            $token = $request->user()->token();
 //            $token->expires_at = $expiresAt;
 //            $token->save();
+            Log::info($AToken, (array)$user);
             return \response([
                 'token' => $AToken,
                 'user' =>$user
@@ -40,6 +42,7 @@ class AuthController extends Controller
 
     public function register(RegisterRequest $request)
     {
+        Log::channel('process')->info($request );
         $user = User::create([
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),

@@ -73,6 +73,7 @@ const TimedQuiz = () => {
         }
         getQuiz();
     }, [myData])
+
     return (
         <Wrapper>
             <div className='timed-quiz'>
