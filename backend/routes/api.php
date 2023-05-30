@@ -3,6 +3,7 @@
 use App\Http\Controllers\Authentication\AuthController;
 use App\Http\Controllers\Forum\CommentController;
 use App\Http\Controllers\Forum\PostsController;
+use App\Http\Controllers\Quiz\QuestionController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
@@ -31,8 +32,8 @@ Route::middleware(['auth:api'])->group(function (){
     Route::post('/posts/{post}/comments/{comment}/comments', [CommentController::class, 'commentReply']);
 
 //    quiz
-    Route::post('/insert-data', [\App\Http\Controllers\Quiz\QuestionController::class,'insertData']);
-
+    Route::post('/insert-questions', [QuestionController::class,'insertQuestion']);
+    Route::post('/insert-results',[QuestionController::class,'insertResults']);
 
 
 });

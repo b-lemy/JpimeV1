@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 // import axios from "axios";
-import {useLocation,useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {decode} from "html-entities";
 import quizApi from "../../api/QuizApi";
 import LaravelApi from "../../api/LaravelApi";
@@ -19,14 +19,10 @@ const TimedQuiz = () => {
     // console.log(myData)
 
 
-    const correctAnswerHandler = (index) => {
-
-    }
-
     const handleAnswerClick = (correct_answer, answer) => {
         // setSelectedAnswerIndex(2)
-        console.log(answer)
-        console.log(correct_answer)
+        // console.log(answer)
+        // console.log(correct_answer)
         // console.log(selectedAnswerIndex)
          if (correct_answer === answer) {
         setScore(score + 1);
@@ -39,9 +35,7 @@ const TimedQuiz = () => {
         if (currentQuestionIndex < quiz.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
-            // console.log('No more questions');
-            // console.log('Final Score:', score);
-            navigate('/quiz/timed_quiz/finalScore' ,{state:{score}})
+            navigate('/quiz/timed_quiz/finalScore', {state: {score}})
 
         }
     };
@@ -60,15 +54,15 @@ const TimedQuiz = () => {
             }
             if (myData[3]) {
                 apiPosts = apiPosts.concat(`&type=${myData[3]}`);
-                console.log(apiPosts)
+                // console.log(apiPosts)
             }
             const apiQuiz = await quizApi.get(apiPosts);
             // console.log(apiQuiz.data.results)
             setQuiz(apiQuiz.data.results);
             const dataToBackend = apiQuiz.data.results
             setIsLoading(false)
-            const response = await LaravelApi.post('/insert-data', {dataToBackend});
-            console.log(response)
+            const response = await LaravelApi.post('/insert-questions', {dataToBackend});
+             // console.log(response)
 
         }
         getQuiz();
@@ -85,7 +79,9 @@ const TimedQuiz = () => {
                     : <div className='quiz_body'>
                         <h1 className="title">Question {currentQuestionIndex + 1}</h1>
                         <h2 className='quiz_question'> {decode(quiz[currentQuestionIndex].question)}<br/>
-                            <span className="category">{decode(quiz[currentQuestionIndex].category)}</span>
+                            <span className="category">
+                                {decode(quiz[currentQuestionIndex].category)}
+                            </span>
                         </h2>
 
                         <ol className="quiz-option">
