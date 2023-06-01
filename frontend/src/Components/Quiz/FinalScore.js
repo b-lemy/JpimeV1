@@ -6,12 +6,14 @@ import laravelApi from "../../api/LaravelApi";
 
 const FinalScore = () => {
     const location = useLocation();
-    const [final , setFinal] =useState(location.state?.score + 1)
-    const finalScore = location.state?.score + 1;
+    const [final , setFinal] =useState(location.state)
+    const finalScore = location.state?.[0] + 1;
+    // console.log(location)
 
     useEffect(() =>{
         const sendFinalScore = async () =>{
              const data = await laravelApi.post("/insert-results",{final})
+
         }
         sendFinalScore()
 

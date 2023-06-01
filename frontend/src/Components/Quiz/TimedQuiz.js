@@ -35,7 +35,7 @@ const TimedQuiz = () => {
         if (currentQuestionIndex < quiz.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
         } else {
-            navigate('/quiz/timed_quiz/finalScore', {state: {score}})
+            navigate('/quiz/timed_quiz/finalScore', {state: [score,quiz.length]})
 
         }
     };

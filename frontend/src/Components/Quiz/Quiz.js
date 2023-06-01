@@ -10,7 +10,7 @@ const Quiz = () => {
     useEffect(() => {
         const quizResults = async () => {
             const results = await LaravelApi.get('get-results')
-            console.log(results.data.data)
+            // console.log(results.data.data)
             setResults(results.data.data)
         }
         quizResults()
@@ -47,7 +47,7 @@ const Quiz = () => {
 
                                 <td>H2H</td>
                                 <td> {item.created_at}</td>
-                                <td> {item.score}</td>
+                                <td> {item.score} %</td>
                                 <td> {item.quiz}</td>
 
                             </tr>

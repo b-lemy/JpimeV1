@@ -53,12 +53,12 @@ class QuestionController extends Controller
 
         $currentDate = Carbon::now();
 
-        Log::channel('process')->info($dataResults, array($loggedIn));
+        Log::channel('process')->info($dataResults);
 
         DB::beginTransaction();
         try {
             DB::table('quiz_attempts')->insert([
-                'score' => $dataResults,
+                'score' => ($dataResults[0]/$dataResults[1]),
                 'quiz_id' => '1',
                 'user_id' => $loggedIn,
                 'created_at' => $currentDate,
