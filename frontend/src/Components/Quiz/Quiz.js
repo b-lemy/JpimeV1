@@ -1,9 +1,22 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Wrapper from "../Layout/Wrapper";
 import './Quiz.css'
 import {Link} from "react-router-dom";
+import LaravelApi from "../../api/LaravelApi";
 
 const Quiz = () => {
+    const [Results, setResults] = useState([])
+
+    useEffect(() => {
+        const quizResults = async () => {
+            const results = await LaravelApi.get('get-results')
+            console.log(results.data.data)
+            setResults(results.data.data)
+        }
+        quizResults()
+
+    }, [])
+
 
     return (
         <Wrapper>
@@ -20,36 +33,27 @@ const Quiz = () => {
                     <table>
                         <thead>
                         <tr>
-                            <th>Quiz Type</th>
-                            <th>Date</th>
-                            <th>Score</th>
-                            <th>Attempts</th>
+                            <th style={{textAlign:"center"}}>Quiz Type</th>
+                            <th style={{textAlign:"center"}}>Date</th>
+                            <th style={{textAlign:"center"}}>Score</th>
+                            <th style={{textAlign:"center"}}>Attempts</th>
 
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>H2H</td>
-                            <td>19/jan/2020</td>
-                            <td>70 %</td>
-                            <td>7</td>
-                        </tr>
+
+                        {Results.map((item, id) => (
+                            <tr key={id}>
+
+                                <td>H2H</td>
+                                <td> {item.created_at}</td>
+                                <td> {item.score}</td>
+                                <td> {item.quiz}</td>
+
+                            </tr>
+                        ))}
                         </tbody>
                         <tbody>
-                        <tr>
-                            <td>Timed</td>
-                            <td>5 days ago</td>
-                            <td> 60 %</td>
-                            <td>2</td>
-                        </tr>
-                        </tbody>
-                        <tbody>
-                        <tr>
-                            <td>H2H</td>
-                            <td>3 hrs ago</td>
-                            <td>40 %</td>
-                            <td>1</td>
-                        </tr>
                         </tbody>
                     </table>
 

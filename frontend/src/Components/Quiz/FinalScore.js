@@ -6,8 +6,8 @@ import laravelApi from "../../api/LaravelApi";
 
 const FinalScore = () => {
     const location = useLocation();
-    const [final , setFinal] =useState(location.state?.score)
-    const finalScore = location.state?.score;
+    const [final , setFinal] =useState(location.state?.score + 1)
+    const finalScore = location.state?.score + 1;
 
     useEffect(() =>{
         const sendFinalScore = async () =>{

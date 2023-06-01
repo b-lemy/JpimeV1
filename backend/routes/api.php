@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('login',[AuthController::class,'login']);
 Route::post('register',[AuthController::class,'register']);
 
+
 Route::middleware(['auth:api'])->group(function (){
     Route::get('getAuthUser',[AuthController::class,'getAuthUser']);
     Route::apiResource('posts' ,PostsController::class);
@@ -34,6 +35,7 @@ Route::middleware(['auth:api'])->group(function (){
 //    quiz
     Route::post('/insert-questions', [QuestionController::class,'insertQuestion']);
     Route::post('/insert-results',[QuestionController::class,'insertResults']);
+    Route::get('/get-results',[QuestionController::class,'getQuizResults']);
 
 
 });
