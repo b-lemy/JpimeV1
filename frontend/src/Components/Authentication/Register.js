@@ -90,11 +90,13 @@ const Register = () => {
                     />
                     {error.confirm_password &&  <span style={{textAlign: "center", color: "red"}}>{error.confirm_password} </span> }
 
-                    <button type="submit">Submit</button>
+                    <button style={{marginTop:"15px"}} type="submit">Submit</button>
                     <div className="foot">
                         <small className="row"> I have an account already </small>
                         <Link to="/login">Login</Link>
                     </div>
+
+                    <small><Link to="/">Back to landing page</Link></small>
 
                 </form>
             </div>

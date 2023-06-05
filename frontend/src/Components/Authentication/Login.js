@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import "./Auth.css"
 import AuthWrapper from "./AuthWrapper";
 import {AuthContext} from "../../StoreContext/Auth-context";
+import {Link} from "react-router-dom";
 
 const Login = () => {
     const {error, setEmail, setPassword, onSubmit, email, password} = useContext(AuthContext)
@@ -26,7 +27,12 @@ const Login = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button type="submit">Login</button>
+                    <button style={{marginTop:"15px"}} type="submit">Login</button>
+                    <div className="foot">
+                        <small className="row">I dont have an account </small>
+                        <Link to="/register">register</Link>
+                    </div>
+                    <small><Link to="/">Back to landing page</Link></small>
                 </form>
             </div>
         </AuthWrapper>

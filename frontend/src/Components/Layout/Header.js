@@ -1,9 +1,11 @@
 import React, {Fragment, useContext, useEffect, useState} from "react";
 import "./Header.css"
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import {AuthContext} from "../../StoreContext/Auth-context";
 
+
 const Header = () => {
+    const navigate = useNavigate()
     const {authUser} = useContext(AuthContext);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     useEffect(() => {
@@ -19,6 +21,7 @@ const Header = () => {
     const handleLogout = () => {
         localStorage.removeItem('token');
         setIsLoggedIn(false);
+        navigate("/")
     }
     return (
         <Fragment>

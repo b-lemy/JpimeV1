@@ -24,7 +24,7 @@ export const AuthProvider = ({children}) => {
                 // const LoginUser = response.data.user;
                 localStorage.setItem('token', accessToken);
                 // localStorage.setItem('AuthUser',  JSON.stringify(LoginUser));
-                navigate('/')
+                navigate('/quiz')
                 window.location.reload(true)
             })
             .catch(error => {
