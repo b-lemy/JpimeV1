@@ -1,0 +1,15 @@
+.landing{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.project{
+    border:1px solid darkgray;
+    padding: 10px;
+    border-radius: 7px;
+    width: 50%;
+
+}
