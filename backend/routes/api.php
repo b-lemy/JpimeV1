@@ -18,7 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // Route::get('/trial',function (){
-//     return Hash::make('Mkombozi123');
+//     return ('Mkombozi123');
+////     return Hash::make('Mkombozi123');
 // });
 
 Route::post('login',[AuthController::class,'login']);

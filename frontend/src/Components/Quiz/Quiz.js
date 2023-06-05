@@ -17,6 +17,9 @@ const Quiz = () => {
 
     }, [])
 
+    const totalScore = Results.reduce((accumulator, item) => accumulator + item.score, 0);
+    const average = totalScore / Results.length
+
 
     return (
         <Wrapper>
@@ -41,26 +44,22 @@ const Quiz = () => {
                         </tr>
                         </thead>
                         <tbody>
-
-                        {Results.map((item, id) => (
+                        { Results.map((item, id) => (
                             <tr key={id}>
-
                                 <td>H2H</td>
                                 <td> {item.created_at}</td>
                                 <td> {item.score} %</td>
                                 <td> {item.quiz}</td>
-
                             </tr>
                         ))}
                         </tbody>
                         <tbody>
                         </tbody>
                     </table>
-
                 </div>
                 <span className="spn">
-                    <p style={{fontSize: '12px', marginBottom: "0",fontWeight:"bolder"}}>Average</p>
-                    <p style={{textAlign: "center", marginBottom: "0",fontWeight:"bolder"}}> 56%</p>
+                    <p style={{fontSize: '12px', marginBottom: "0", fontWeight: "bolder"}}>Average</p>
+                    <p style={{textAlign: "center", marginBottom: "0", fontWeight: "bolder"}}> {average}%</p>
                 </span>
             </section>
         </Wrapper>

@@ -13,17 +13,18 @@ import CreatePost from "./Components/Forum/CreatePost";
 import TimedQuiz from "./Components/Quiz/TimedQuiz";
 import CategoryQuiz from "./Components/Quiz/CategoryQuiz";
 import FinalScore from "./Components/Quiz/FinalScore";
+import Landing from "./Components/LandingPage/Landing";
 //Lazy Loading implementation
 // const Login = lazy(() => import("./Components/Authentication/Login"))
 
 function App() {
     const navigate = useNavigate();
-    // useEffect(() => {
-    //     const token = localStorage.getItem('token');
-    //     if (!token) {
-    //         navigate('/login');
-    //     }
-    // }, [navigate]);
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            navigate('/');
+        }
+    }, [navigate]);
     return (
         <div className="App">
             <Suspense fallback={
@@ -34,6 +35,7 @@ function App() {
 
             }>
                 <Routes>
+                    <Route exact path="/" element={<Landing/>}/>
                     <Route exact path="/about" element={<About/>}/>
                     <Route exact path="/login" element={<Login/>}/>
                     <Route exact path="/register" element={<Register/>}/>
@@ -44,7 +46,7 @@ function App() {
                     <Route exact path="/forum/:id" element={<SinglePost/>}/>
                     <Route exact path="/forum/create" element={<CreatePost/>}/>
                     {/*quiz*/}
-                    <Route exact path="/" element={<Quiz/>}/>
+
                     <Route exact path="/quiz" element={<Quiz/>}/>
                     <Route exact path="/quiz/category" element={<CategoryQuiz/>}/>
                     <Route exact path="/quiz/timed_quiz" element={<TimedQuiz/>}/>
