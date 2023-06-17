@@ -4,6 +4,11 @@ This repository contains the initial
 stage of a student quiz application with different module listed below
 
 ---
+<p align="center">
+  <img src="https://github.com/b-lemy/JpimeV1/blob/main/Screenshot%20(75).png"
+       alt="IdeaDog logo"
+  />
+</p>
 
 <center><h3>Repository Contents by Project Task</h3> </center>
 
