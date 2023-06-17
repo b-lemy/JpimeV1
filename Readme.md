@@ -41,6 +41,4 @@ Steps After cloning the repo:
      php artisan serve
      
 
-
-![](C:\Users\MKBL001\Desktop\JpimeV1\Screenshot (75).png)
     
