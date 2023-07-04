@@ -39,6 +39,18 @@ Steps After cloning the repo:
      npm i
      php artisan migrate :seed
      php artisan serve
-     
+
+
+
+> **Note**
+>
+> In order to support linking by anchor reference from other documents, please try to keep the section ids unique. For example, if "#webapi_validation" is unique across the documentation, then you can refer to it from any other part of the documentation simply with `[link name](#webapi_validation)`.  
+> If the section id being referenced is not unique, the document processor will attempt to resolve to the "closest" anchor with that name. *When the linking file belongs to a specific version, the processor will ignore anchors belonging to different versions*.
+
+> **Caution**
+>
+> Our documentation is compiled into both pages and full documents. For this reason it is not advised to include paths in inter-document references. Please use unique section ids as described above in order for the links to resolve correctly in both document types.
+
+(Please follow the convention of lowercase letters and underscores, in order to create id's that are also valid as filenames in cases where we split files as part of the document generation).
 
     
