@@ -22,3 +22,20 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+
+#web:
+#  image: nginx:latest
+#  ports:
+#    - "80:80"
+#  volumes:
+#    - ./public:/var/www/html/public
+#  depends_on:
+#    - app
+#
+#  app:
+#    build:
+#      context: .
+#    ports:
+#      - "9000:9000"
+#    volumes:
+#      - .:/var/www/html
