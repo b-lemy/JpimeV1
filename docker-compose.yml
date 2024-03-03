@@ -1,41 +1,66 @@
-version: '3'
-
+#specifies the version of docker compose
+version: '3.8'
+#define services/containers to be run
 services:
-
+  #frontend service standard  naming convention we can use 'web'
   frontend:
+    #we specify that the web depends on the api service means the backend
+    #will start before frontend
+    depends_on:
+      - backend
     build:
+      #specify the build content of the frontend service
+      #specifices the directory where the dockerfile for the frontend service is located
       context: ./frontend
       dockerfile: Dockerfile
+    #specifies the ports to be exposed (port in host machine : port inside the container)
     ports:
       - "3000:3000"
+    #specifiy envronment variables if any
+    environment:
+      URL: #######
     volumes:
       - /app/node_modules
       - ./frontend:/app
-    depends_on:
-      - backend
     restart: on-failure
+    develop:
+      watch:
+        #it will watch for changes in the package.json and package-lock.json and
+        #rebuild the container
+      - path: ./frontend/package.json
+        action: rebuild
+      - path: ./frontend/package-lock.json
+        action: rebuild
+        # it will watch for changes in the frontend directory and sync the changes
+        #with the container real time
+      - path: ./frontend
+        target: /app
+        action: sync
 
-
+  #define the api service
   backend:
     build:
-      context: backend
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    restart: on-failure
 
-#web:
-#  image: nginx:latest
-#  ports:
-#    - "80:80"
-#  volumes:
-#    - ./public:/var/www/html/public
-#  depends_on:
-#    - app
-#
-#  app:
-#    build:
-#      context: .
-#    ports:
-#      - "9000:9000"
-#    volumes:
-#      - .:/var/www/html
+    depends_on:
+      - db
+
+#define the db service
+  db:
+    #specifies the image to use for the db service here we are using an image
+    #from the docker hub
+    image: nginx:latest
+    #specifes the ports to expose for the db service you must use the default port nginx uses
+    ports:
+      - "80:80"
+    volumes:
+      - anime:/data/db
+
+
+#you can define the volumes separately to be used by the services
+volumes:
+  anime:
