@@ -1,5 +1,8 @@
+#arguments
+ARG NODE_VERSION=20.10.0
 #sets the base image for the react app
-FROM node:20-alpine
+#FROM node:20-alpine
+FROM node:${NODE_VERSION}-alphine
 #create the user with permission to run the app
 # -S -> create a system user
 # -G -> add the user to the group

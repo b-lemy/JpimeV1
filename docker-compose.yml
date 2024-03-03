@@ -53,7 +53,7 @@ services:
   db:
     #specifies the image to use for the db service here we are using an image
     #from the docker hub
-    image: nginx:latest
+    image: nginx:latest  # OR APACHE for this project
     #specifes the ports to expose for the db service you must use the default port nginx uses
     ports:
       - "80:80"
