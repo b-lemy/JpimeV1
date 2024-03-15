@@ -46,19 +46,22 @@ services:
       - "8000:8000"
     restart: on-failure
 
-    depends_on:
-      - db
+#    depends_on:
+#      - db
+
+    volumes:
+      - ./:/var/www/html
 
 #define the db service
-  db:
-    #specifies the image to use for the db service here we are using an image
-    #from the docker hub
-    image: nginx:latest  # OR APACHE for this project
-    #specifes the ports to expose for the db service you must use the default port nginx uses
-    ports:
-      - "80:80"
-    volumes:
-      - anime:/data/db
+#  db:
+#    #specifies the image to use for the db service here we are using an image
+#    #from the docker hub
+#    image: nginx:latest  # OR APACHE for this project
+#    #specifes the ports to expose for the db service you must use the default port nginx uses
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - anime:/data/db
 
 
 #you can define the volumes separately to be used by the services

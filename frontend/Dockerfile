@@ -1,8 +1,8 @@
 #arguments
-ARG NODE_VERSION=20.10.0
+ARG NODE_VERSION=19
 #sets the base image for the react app
 #FROM node:20-alpine
-FROM node:${NODE_VERSION}-alphine
+FROM node:${NODE_VERSION}
 #create the user with permission to run the app
 # -S -> create a system user
 # -G -> add the user to the group
@@ -24,7 +24,7 @@ RUN npm install
 COPY . .
 #expose port 5173 to tell Docker that
 #the container listens on the specified network ports at runtime
-EXPOSE 5173
+EXPOSE 3000
 #Command to run the app
 CMD ["npm", "run", "start"]
 # to run docker run 5173:5173  <image>
