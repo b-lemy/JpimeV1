@@ -81,6 +81,8 @@ services:
     ports:
       - 8001:80
 
+#automate migrate and seeding
+
 #define the db service
 #  db:
 #    #specifies the image to use for the db service here we are using an image
