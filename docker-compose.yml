@@ -52,6 +52,35 @@ services:
     volumes:
       - ./:/var/www/html
 
+
+  mysql:
+    # I will use a specific version that using latest
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+
+    ports:
+      - 3306:3306
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", 'ping' ,"-p${DB_PASSWORD}"]
+      retries: 3
+      timeout: 5s
+
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+
+    depends_on:
+      - mysql
+    ports:
+      - 8001:80
+
 #define the db service
 #  db:
 #    #specifies the image to use for the db service here we are using an image
