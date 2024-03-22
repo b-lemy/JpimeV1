@@ -64,8 +64,13 @@ services:
       MYSQL_PASSWORD: '${DB_PASSWORD}'
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
+    volumes:
+      - mysql:/var/lib/mysql
+
+    restart: unless-stopped
+
     ports:
-      - 3306:3306
+      - "3306:3306"
 
     healthcheck:
       test: ["CMD", "mysqladmin", 'ping' ,"-p${DB_PASSWORD}"]
@@ -79,7 +84,10 @@ services:
     depends_on:
       - mysql
     ports:
-      - 8001:80
+      - "8001:80"
+    environment:
+      - PMA_ARBITRARY=1
+    restart: unless-stopped
 
 #automate migrate and seeding
 
