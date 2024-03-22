@@ -4,10 +4,14 @@ version: '3.8'
 services:
   #frontend service standard  naming convention we can use 'web'
   frontend:
+    networks:
+      - app
     #we specify that the web depends on the api service means the backend
     #will start before frontend
     depends_on:
       - backend
+    # to keep the connection live
+    tty: true
     build:
       #specify the build content of the frontend service
       #specifices the directory where the dockerfile for the frontend service is located
@@ -23,70 +27,62 @@ services:
       - /app/node_modules
       - ./frontend:/app
     restart: on-failure
-    develop:
-      watch:
-        #it will watch for changes in the package.json and package-lock.json and
-        #rebuild the container
-      - path: ./frontend/package.json
-        action: rebuild
-      - path: ./frontend/package-lock.json
-        action: rebuild
-        # it will watch for changes in the frontend directory and sync the changes
-        #with the container real time
-      - path: ./frontend
-        target: /app
-        action: sync
 
   #define the api service
   backend:
+    networks:
+      - app
     build:
       context: ./backend
       dockerfile: Dockerfile
+
+    environment:
+      DB_HOST: db
+      DB_DATABASE: backend
+      DB_USERNAME: root
+      DB_PASSWORD: Xsw21qaz
     ports:
       - "8000:8000"
     restart: on-failure
-
-#    depends_on:
-#      - db
-
+    depends_on:
+     - db
     volumes:
-      - ./:/var/www/html
+      - ./backend:/var/www/html
 
-
-  mysql:
+  db:
+    networks:
+      - app
     # I will use a specific version that using latest
-    image: mysql:latest
+    image: mysql:8.3.0
     environment:
-      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-      MYSQL_ROOT_HOST: '%'
-      MYSQL_DATABASE: '${DB_DATABASE}'
-      MYSQL_USER: '${DB_USERNAME}'
-      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_PASSWORD: 'Xsw21qaz'
+      MYSQL_ROOT_HOST: 'localhost'
+      MYSQL_DATABASE:  'backend'
+      MYSQL_USER: 'brian'
+      MYSQL_PASSWORD: 'Xsw21qaz'
       MYSQL_ALLOW_EMPTY_PASSWORD: 1
 
     volumes:
-      - mysql:/var/lib/mysql
+      - .dbdata:/var/lib/mysql
 
     restart: unless-stopped
-
     ports:
       - "3306:3306"
-
     healthcheck:
-      test: ["CMD", "mysqladmin", 'ping' ,"-p${DB_PASSWORD}"]
+      test: ["CMD", "mysqladmin", 'ping' ,"Xsw21qaz"]
       retries: 3
       timeout: 5s
 
-
   phpmyadmin:
     image: phpmyadmin:latest
-
     depends_on:
-      - mysql
+      - db
     ports:
-      - "8001:80"
+      - "8080:80"
     environment:
-      - PMA_ARBITRARY=1
+      -PMA_HOST: db
+      -PMA_PASSWORD: Xsw21qaz
+    #  - PMA_ARBITRARY=1
     restart: unless-stopped
 
 #automate migrate and seeding
@@ -103,6 +99,7 @@ services:
 #      - anime:/data/db
 
 
-#you can define the volumes separately to be used by the services
-volumes:
-  anime:
+#This will enable all services to be on the same network
+networks:
+  app:
+    driver: bridge

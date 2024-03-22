@@ -1,5 +1,5 @@
 # Use the official PHP image
-FROM php:7.4-fpm
+FROM php:8.2-fpm
 
 # Set the working directory in the container
 WORKDIR /var/www/html
@@ -34,4 +34,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 EXPOSE 8000
 
 # Start PHP-FPM
-CMD ["php-fpm"]
+CMD php artisan serve --host=0.0.0.0
