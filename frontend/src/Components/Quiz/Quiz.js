@@ -14,8 +14,10 @@ const Quiz = () => {
             setResults(results.data.data)
         }
         quizResults()
-
+  console.log(quizResults())
     }, [])
+
+
 
     const totalScore = Results.reduce((accumulator, item) => accumulator + item.score, 0);
     const average = totalScore / Results.length

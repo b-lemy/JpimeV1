@@ -22,6 +22,12 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
+RUN php artisan view:clear
+RUN php artisan route:clear
+RUN php artisan config:cache
+RUN php artisan cache:clear
+
+
 #create user
 #RUN group --gid 1000 appuser \
 #    && useradd --uid 1000 -g appuser \
