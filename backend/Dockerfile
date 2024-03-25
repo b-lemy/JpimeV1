@@ -27,6 +27,10 @@ RUN php artisan route:clear
 RUN php artisan config:cache
 RUN php artisan cache:clear
 
+RUN php artisan passport:install
+
+
+
 
 #create user
 #RUN group --gid 1000 appuser \
