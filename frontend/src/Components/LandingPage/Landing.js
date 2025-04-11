@@ -8,7 +8,7 @@ const Landing = () => {
                 <Header/>
                 <div className="landing">
                     <div className="project">
-                        <p> Project Name :<span style={{fontWeight: "bolder"}}> Jipime Fasta Quiz App </span>
+                        <p> Project Name :<span style={{fontWeight: "bolder"}}> Jipime Fasta Quiz App 2 </span>
                            <br/>
 
 

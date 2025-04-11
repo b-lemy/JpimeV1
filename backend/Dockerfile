@@ -22,12 +22,12 @@ COPY . .
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 
-RUN php artisan view:clear
-RUN php artisan route:clear
-RUN php artisan config:cache
-RUN php artisan cache:clear
+##RUN php artisan view:clear
+##RUN php artisan route:clear
+##RUN php artisan config:cache
+##RUN php artisan cache:clear
 
-RUN php artisan passport:install
+##RUN php artisan passport:install
 
 
 
